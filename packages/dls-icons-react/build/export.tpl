@@ -1,1 +1,1 @@
-export {name} from './icons/{name}'
+export Icon{name} from './icons/Icon{name}'

@@ -38,7 +38,7 @@ Promise.all(
 
     let name = upperFirst(camelCase(slug))
     let code = MODULE_TPL.replace(/\{slug\}/g, slug).replace(/\{name\}/g, name)
-    fs.writeFileSync(path.join(ICON_DIR, `${name}.js`), code, 'utf8')
+    fs.writeFileSync(path.join(ICON_DIR, `Icon${name}.js`), code, 'utf8')
 
     icons.push({ slug, name, file })
   })
@@ -62,7 +62,7 @@ Promise.all(
             (icon) =>
               `<td align="center">${
                 icon
-                  ? `<img src="../../svg/${icon.file}"/><br/><sub>${icon.name}</sub>`
+                  ? `<img src="../../svg/${icon.file}"/><br/><sub>Icon${icon.name}</sub>`
                   : ''
               }</td>`
           )
