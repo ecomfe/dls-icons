@@ -7,7 +7,7 @@ import Svgo from 'svgo'
 const svgo = new Svgo({
   multipass: true,
   removeViewBox: false,
-  floatPrecision: 2
+  floatPrecision: 3
 })
 
 let icons = 0
