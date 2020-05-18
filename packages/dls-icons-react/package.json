@@ -1,0 +1,44 @@
+{
+  "name": "dls-icons-react",
+  "version": "0.0.1",
+  "description": "DLS icons for React.",
+  "author": {
+    "name": "zhanglili01,huoyuxuan,lisiqi06"
+  },
+  "scripts": {
+    "build": "node -r esm ./build/prepare.js && node -r esm rollup.js",
+    "prepublishOnly": "npm run build"
+  },
+  "main": "cjs/index.js",
+  "module": "es/index.js",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-react-require": "^3.0.0",
+    "lodash": "^4.17.15",
+    "react": "^16.4.1",
+    "rollup": "^1.12.3",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^5.0.0",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-svg-to-jsx": "^1.0.0"
+  },
+  "files": [
+    "cjs",
+    "es",
+    "README.md"
+  ],
+  "keywords": [
+    "icon",
+    "svg",
+    "ui",
+    "dls"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16"
+  }
+}

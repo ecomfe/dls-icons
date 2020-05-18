@@ -1,0 +1,25 @@
+{
+  "name": "dls-icons",
+  "version": "0.0.0",
+  "description": "Icons for Baidu DLS.",
+  "main": "index.js",
+  "scripts": {
+    "normalize": "node -r esm build/normalize.js"
+  },
+  "keywords": [
+    "svg",
+    "icons",
+    "baidu",
+    "dls"
+  ],
+  "author": "Justineo <justice360@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "esm": "^3.2.25",
+    "lerna": "^3.21.0",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2",
+    "svgo": "^1.3.2",
+    "svgson": "^4.1.0"
+  }
+}
