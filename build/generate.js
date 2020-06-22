@@ -152,7 +152,7 @@ Promise.all(
       .replace(/\{icon\}/g, iconCode)
 
     ICON_PACKS.forEach(pack => {
-      let iconsDir = path.join(getPackDir(pack), 'src/icons')      
+      let iconsDir = path.join(getPackDir(pack), 'src/icons')
       fs.writeFileSync(path.join(iconsDir, `${name}.js`), moduleCode, 'utf8')
     })
 
