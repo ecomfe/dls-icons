@@ -15,12 +15,10 @@ const babelConfig = {
       {
         modules: false,
       },
-    ],
-    '@babel/preset-react',
+    ]
   ],
   plugins: [
-    '@babel/plugin-proposal-export-default-from',
-    'babel-plugin-react-require',
+    '@babel/plugin-proposal-export-default-from'
   ],
   exclude: 'node_modules/**',
   extensions: ['.js'],

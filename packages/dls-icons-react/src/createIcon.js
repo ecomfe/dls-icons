@@ -1,30 +1,33 @@
 /**
- * @file SVG图标工厂函数
- * @author zhanglili
+ * @file SVG icon factory
+ * @author zhanglili, guyiling
  */
+import '@/icon.css'
+import { escapeHTML } from '@/util'
 
-import { memoize, merge } from './utils'
-import './icon.css'
+const baseClassName = 'dls-icon'
 
-const computeScaleStyle = memoize((n) => ({
-  display: 'inline-block',
-  width: `${n}em`,
-  height: `${n}em`,
-}))
-
-export default svg => {
-  const baseClassName = 'dls-icon'
-  const IconComponent = svg
-
-  return ({ className, scale, style, ...props }) => {
+export default function createIcon({ content, width, height }) {
+  return ({ className, title, ...props }) => {
     const iconClassName = className
-      ? baseClassName + ' ' + className
+      ? `${baseClassName} ${className}`
       : baseClassName
-    const scaleStyle = scale ? computeScaleStyle(scale) : null
-    const iconStyle = merge(scaleStyle, style)
+
+    const { tabIndex } = props
+    const markup = {
+      __html: (title ? `<title>${escapeHTML(title)}</title>` : '') + content,
+    }
 
     return (
-      <IconComponent {...props} style={iconStyle} className={iconClassName} />
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        className={iconClassName}
+        focusable={tabIndex !== '0' ? false : null}
+        dangerouslySetInnerHTML={markup}
+        {...props}
+      />
     )
   }
 }

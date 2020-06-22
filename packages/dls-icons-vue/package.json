@@ -1,9 +1,9 @@
 {
-  "name": "dls-icons-react",
+  "name": "dls-icons-vue",
   "version": "0.2.0",
-  "description": "DLS icons for React.",
+  "description": "DLS icons for Vue.",
   "author": {
-    "name": "zhanglili01,huoyuxuan,lisiqi06,guyiling"
+    "name": "guyiling"
   },
   "scripts": {
     "build": "node -r esm rollup.js",
@@ -15,10 +15,8 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-export-default-from": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-json": "^4.1.0",
-    "babel-plugin-react-require": "^3.0.0",
     "react": "^16.4.1",
     "rollup": "^1.12.3",
     "rollup-plugin-auto-external": "^2.0.0",
@@ -36,10 +34,10 @@
     "svg",
     "ui",
     "dls",
-    "react"
+    "vue"
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=16"
+    "vue": "2.x"
   }
 }

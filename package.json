@@ -4,7 +4,9 @@
   "description": "Icons for Baidu DLS.",
   "main": "index.js",
   "scripts": {
-    "normalize": "node -r esm build/normalize.js"
+    "generate": "node -r esm build/generate.js",
+    "build": "npm run generate && lerna run build",
+    "prepare": "lerna bootstrap && npm run build"
   },
   "keywords": [
     "svg",
@@ -17,8 +19,11 @@
   "devDependencies": {
     "esm": "^3.2.25",
     "lerna": "^3.21.0",
+    "lodash": "^4.17.15",
     "mkdirp": "^1.0.4",
+    "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
+    "stringify-object": "^3.3.0",
     "svgo": "^1.3.2",
     "svgson": "^4.1.0"
   }
