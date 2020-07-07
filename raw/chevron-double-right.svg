@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="10px" height="16px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+<svg width="11px" height="16px" viewBox="0 0 11 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
     <title>chevron-double-right</title>
     <desc>Created with Sketch.</desc>
     <g id="chevron-double-right" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M4.79917789,3 L10,8.01030108 L4.79815396,13 L3.90875174,12.0232407 L8.09445095,8.00752939 L3.90772782,3.97479071 L4.79917789,3 Z M0.891450069,3 L6.09227218,8.01030108 L0.890426146,13 L0.00102392224,12.0232407 L4.18672313,8.00752939 L0,3.97479071 L0.891450069,3 Z" id="形状" fill="#000000"></path>
+        <g id="编组" transform="translate(0.000000, 3.000000)" fill="#000000" fill-rule="nonzero">
+            <polygon id="路径-33备份" points="4 0.972173937 4.91249965 -7.81597009e-14 10.2361275 4.99685121 4.91145155 9.97315558 4.0010481 8.99901836 8.28558316 4.99408697"></polygon>
+            <polygon id="路径-33备份-2" points="3.28626015e-14 0.972173937 0.912499652 -7.81597009e-14 6.23612745 4.99685121 0.911451552 9.97315558 0.00104809985 8.99901836 4.28558316 4.99408697"></polygon>
+        </g>
     </g>
 </svg>
