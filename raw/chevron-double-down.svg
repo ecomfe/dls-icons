@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="10px" height="16px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+<svg width="11px" height="16px" viewBox="0 0 11 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
     <title>chevron-double-down</title>
     <desc>Created with Sketch.</desc>
     <g id="chevron-double-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M0.974790706,7.0421882 L5.00752939,11.1365076 L9.02324072,7.04318952 L10,7.91296207 L5.01030108,13 L0,7.91396339 L0.974790706,7.0421882 Z M0.974790706,3 L5.0078803,7.09431945 L9.02324072,3.00100132 L10,3.87077387 L5.01030108,8.9578118 L0,3.87177519 L0.974790706,3 Z" id="形状" fill="#000000"></path>
+        <g id="编组" transform="translate(0.300000, 2.500000)" fill="#000000" fill-rule="nonzero">
+            <polygon id="路径-33备份" transform="translate(5.118064, 7.650928) scale(-1, 1) rotate(-270.000000) translate(-5.118064, -7.650928) " points="2 3.6365239 2.91249965 2.66434996 8.23612745 7.66120118 2.91145155 12.6375055 2.0010481 11.6633683 6.28558316 7.65843693"></polygon>
+            <polygon id="路径-33备份-2" transform="translate(5.118064, 3.653244) scale(-1, 1) rotate(-270.000000) translate(-5.118064, -3.653244) " points="2 -0.361159397 2.91249965 -1.33333333 8.23612745 3.66351788 2.91145155 8.63982225 2.0010481 7.66568502 6.28558316 3.6611036"></polygon>
+        </g>
     </g>
 </svg>
