@@ -5,3 +5,17 @@
   fill: currentColor;
   vertical-align: -0.125em;
 }
+
+.dls-icon-spin {
+  animation: dls-icon-spin 1s infinite linear;
+}
+
+@keyframes dls-icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

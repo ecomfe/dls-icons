@@ -8,11 +8,14 @@ import { escapeHTML } from '@/util'
 const baseClassName = 'dls-icon'
 
 export default function createIcon({ content, width, height }) {
-  return ({ className, title, ...props }) => {
-    const iconClassName = className
-      ? `${baseClassName} ${className}`
-      : baseClassName
+  return ({ className, title, spin, ...props }) => {
+    const iconClasses = [baseClassName, className]
 
+    if (spin) {
+      iconClasses.push(`${baseClassName}-spin`)
+    }
+
+    const iconClassName = iconClasses.join(' ')
     const { tabIndex } = props
     const markup = {
       __html: (title ? `<title>${escapeHTML(title)}</title>` : '') + content,

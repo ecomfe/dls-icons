@@ -15,7 +15,6 @@ const svgo = new Svgo({
 const RAW_DIR = path.resolve(__dirname, '../raw')
 const SVG_DIR = path.resolve(__dirname, '../svg')
 const SRC_DIR = path.resolve(__dirname, '../src')
-const ICONS_DIR = path.resolve(SRC_DIR, 'icons')
 const ICON_PATTERN = /^(.+)\.svg$/
 const MODULE_TPL = fs.readFileSync(
   path.resolve(__dirname, 'component.tpl'),
@@ -33,8 +32,6 @@ function getPackDir (name) {
 
 rimraf.sync(SVG_DIR)
 mkdirp.sync(SVG_DIR)
-rimraf.sync(ICONS_DIR)
-mkdirp.sync(ICONS_DIR)
 
 ICON_PACKS.forEach(pack => {
   let iconsDir = path.join(getPackDir(pack), 'src/icons')

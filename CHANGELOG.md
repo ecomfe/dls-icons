@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.4.0
+
+- Added `spin` prop.
+
 ## 0.3.2
 
 - Adjusted `chevron-double-up` and `chevron-double-down`.

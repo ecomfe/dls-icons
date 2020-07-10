@@ -10,7 +10,10 @@ const baseClassName = 'dls-icon'
 export default function createIcon({ content, width, height }) {
   return {
     functional: true,
-    render(h, { data = {} }) {
+    props: {
+      spin: Boolean
+    },
+    render(h, { props = {}, data = {} }) {
       const {
         staticClass,
         class: dynamicClass,
@@ -20,8 +23,14 @@ export default function createIcon({ content, width, height }) {
       } = data
       const { tabindex } = attrs
 
+      const iconClasses = [baseClassName, staticClass, dynamicClass]
+
+      if (props.spin) {
+        iconClasses.push(`${baseClassName}-spin`)
+      }
+
       return h('svg', {
-        class: [baseClassName, staticClass, dynamicClass],
+        class: iconClasses,
         style,
         attrs: {
           width,
