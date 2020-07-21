@@ -14,7 +14,6 @@ const svgo = new Svgo({
 
 const RAW_DIR = path.resolve(__dirname, '../raw')
 const SVG_DIR = path.resolve(__dirname, '../svg')
-const SRC_DIR = path.resolve(__dirname, '../src')
 const ICON_PATTERN = /^(.+)\.svg$/
 const MODULE_TPL = fs.readFileSync(
   path.resolve(__dirname, 'component.tpl'),
@@ -160,7 +159,7 @@ Promise.all(
     .map(({ slug, name }) =>
       EXPORT_TPL.replace(/\{slug\}/g, slug).replace(/\{name\}/g, name)
     )
-    .join('')
+    .join('') + `export createIcon from './createIcon'\n`
 
   ICON_PACKS.forEach(pack => {
     let packDir = getPackDir(pack)

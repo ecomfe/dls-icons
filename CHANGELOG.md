@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.4.1
+
+- Added `createIcon` to exports.
+
 ## 0.4.0
 
 - Added `spin` prop.
