@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.4.2
+
+- Added `name` for Vue components.
+
 ## 0.4.1
 
 - Added `createIcon` to exports.
