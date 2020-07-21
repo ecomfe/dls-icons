@@ -7,9 +7,10 @@ import { escapeHTML } from '@/util'
 
 const baseClassName = 'dls-icon'
 
-export default function createIcon({ content, width, height }) {
+export default function createIcon({ name, content, width, height }) {
   return {
     functional: true,
+    name,
     props: {
       spin: Boolean
     },

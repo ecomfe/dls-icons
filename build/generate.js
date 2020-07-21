@@ -135,6 +135,7 @@ Promise.all(
     let name = upperFirst(camelCase(slug))
 
     let iconCode = stringifyObject({
+      name: `icon-${slug}`,
       content: el.children.map(child => stringify(child)).join(''),
       width: Number(width),
       height: Number(height),
