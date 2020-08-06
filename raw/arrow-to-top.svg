@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="13px" height="16px" viewBox="0 0 13 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>arrow-to-top</title>
-    <desc>Created with Sketch.</desc>
-    <g id="arrow-to-top" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="路径" fill="#000000" points="12.9747641 1 12.9747641 2.30232558 6.53105947 2.30232558 13 7.48578924 12.2034289 8.50751577 7.1939286 4.49348837 7.1939286 15 5.9092985 15 5.9092985 4.41990698 0.795456846 8.50796167 0 7.48534334 6.48224352 2.30232558 0.128463011 2.30232558 0.128463011 1"></polygon>
-    </g>
-</svg>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#000" d="M22 1.5L22 3.5 11.968 3.5 22.039289 11.4603192 20.7991326 13.0293992 13 6.865 13 23 11 23 11 6.752 3.03842162 13.030084 1.8 11.4596344 11.892 3.5 2 3.5 2 1.5z" fill-rule="evenodd"/></svg>

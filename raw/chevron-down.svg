@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="10px" height="16px" viewBox="0 0 10 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
-    <title>chevron-down</title>
-    <desc>Created with Sketch.</desc>
-    <g id="chevron-down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="路径-33备份" fill="#000000" transform="translate(5.000000, 9.000000) scale(-1, 1) rotate(-270.000000) translate(-5.000000, -9.000000) " points="2 4.97479071 2.87794837 4 8 9.01030108 2.87693995 14 2.00100841 13.0232407 6.12331197 9.00752939"></polygon>
-    </g>
-</svg>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#000" transform="matrix(0 1 1 0 -.897 .897)" d="M7.3027711 6.85548981L8.67152057 5.3972289 16.6569623 12.8925057 8.66994842 20.3569623 7.30434325 18.8957564 13.7311458 12.8883594z" fill-rule="evenodd"/></svg>

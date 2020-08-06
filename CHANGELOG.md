@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 0.5.0
+
+- ⚠️ Renamed `triangle-*` to `caret-*`.
+- Added 91 new icons.
+
 ## 0.4.2
 
 - Added `name` for Vue components.

@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="11px" height="16px" viewBox="0 0 11 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
-    <title>chevron-double-left</title>
-    <desc>Created with Sketch.</desc>
-    <g id="chevron-double-left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="编组" transform="translate(0.000000, 3.000000)" fill="#000000" fill-rule="nonzero">
-            <polygon id="路径-33备份" transform="translate(3.118064, 4.986578) scale(-1, 1) translate(-3.118064, -4.986578) " points="3.28626015e-14 0.972173937 0.912499652 -7.81597009e-14 6.23612745 4.99685121 0.911451552 9.97315558 0.00104809985 8.99901836 4.28558316 4.99408697"></polygon>
-            <polygon id="路径-33备份-2" transform="translate(7.118064, 4.986578) scale(-1, 1) translate(-7.118064, -4.986578) " points="4 0.972173937 4.91249965 -7.81597009e-14 10.2361275 4.99685121 4.91145155 9.97315558 4.0010481 8.99901836 8.28558316 4.99408697"></polygon>
-        </g>
-    </g>
-</svg>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g fill="#000" fill-rule="nonzero"><path transform="matrix(-1 0 0 1 13.854 4.5)" d="M3.28626015e-14 1.4582609L1.36874948 -7.81597009e-14 9.35419118 7.49527682 1.36717733 14.9597334 0.00157214978 13.4985275 6.42837474 7.49113045z"/><path transform="matrix(-1 0 0 1 25.854 4.5)" d="M6 1.4582609L7.36874948 -7.81597009e-14 15.3541912 7.49527682 7.36717733 14.9597334 6.00157215 13.4985275 12.4283747 7.49113045z"/></g></svg>
