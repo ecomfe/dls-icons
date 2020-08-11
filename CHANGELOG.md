@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.7.0
+
+- Added 6 new icons.
+
 ## 0.6.0
 
 - ⚠️ Renamed `shopping` to `market`.
