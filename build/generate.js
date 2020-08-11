@@ -31,14 +31,17 @@ function getPackDir(name) {
   return path.resolve(__dirname, `../packages/${name}`)
 }
 
+function clearDir(dir) {
+  rimraf.sync(dir)
+  mkdirp.sync(dir)
+}
+
 async function generate() {
-  rimraf.sync(SVG_DIR)
-  mkdirp.sync(SVG_DIR)
+  clearDir(SVG_DIR)
 
   ICON_PACKS.forEach((pack) => {
     let iconsDir = path.join(getPackDir(pack), 'src/icons')
-    rimraf.sync(iconsDir)
-    mkdirp.sync(iconsDir)
+    clearDir(iconsDir)
   })
 
   Promise.all(
@@ -124,6 +127,8 @@ async function generate() {
 async function getSVGFiles() {
   if (ENDPOINT) {
     let { data } = JSON.parse(await fetch(ENDPOINT).then((res) => res.text()))
+
+    clearDir(RAW_DIR)
 
     data.forEach(({ label, svg }) => {
       fs.writeFileSync(
