@@ -44,7 +44,10 @@ async function generate() {
   Promise.all(
     (await getSVGFiles()).map(async ({ slug, content }) => {
       let file = `${slug}.svg`
-      let { el, content: svg, width, height } = await normalizeSVG(content, file)
+      let { el, content: svg, width, height } = await normalizeSVG(
+        content,
+        file
+      )
 
       fs.writeFileSync(path.join(SVG_DIR, file), svg, 'utf8')
 
@@ -90,7 +93,7 @@ async function generate() {
         path.join(packDir, 'build/readme.tpl'),
         'utf8'
       )
-      let cols = 3
+      let cols = 5
       let iconTable =
         '<table><tbody>' +
         Array.from({ length: Math.ceil(icons.length / cols) })
@@ -101,7 +104,7 @@ async function generate() {
                 (icon) =>
                   `<td align="center">${
                     icon
-                      ? `<img src="../../svg/${icon.file}"/><br/><sub>Icon${icon.name}</sub>`
+                      ? `<img src="../../svg/${icon.file}" height="24"/><br/><sub>Icon${icon.name}</sub>`
                       : ''
                   }</td>`
               )
@@ -123,7 +126,11 @@ async function getSVGFiles() {
     let { data } = JSON.parse(await fetch(ENDPOINT).then((res) => res.text()))
 
     data.forEach(({ label, svg }) => {
-      fs.writeFileSync(path.join(RAW_DIR, label.replace(/_/g, '-') + '.svg'), svg, 'utf8')
+      fs.writeFileSync(
+        path.join(RAW_DIR, label.replace(/_/g, '-') + '.svg'),
+        svg,
+        'utf8'
+      )
     })
 
     return data.map(({ label, svg }) => ({
@@ -156,23 +163,17 @@ async function normalizeSVG(content, file) {
   console.log(`Normalizing ${file}...`)
   let { attributes } = el
   let { width, height, viewBox } = attributes
-  if (!(width && height)) {
-    if (!viewBox) {
-      console.error(file, `doesn't contain a valid size declaration.`)
-      console.error(width, height, viewBox)
-    }
 
+  if (!viewBox && !(width && height)) {
+    console.error(file, `doesn't contain a valid size declaration.`)
+    console.error(width, height, viewBox)
+  } else if (viewBox) {
+    // has viewBox, override width/height
     ;[, width, height] = (viewBox.match(/0 0 (\d+) (\d+)/) || []).map((size) =>
       parseInt(size, 10)
     )
-  }
-
-  if (!(width && height)) {
-    console.error(file, `doesn't contain a valid size declaration.`)
-    console.error(width, height, viewBox)
-  }
-
-  if (!viewBox) {
+  } else {
+    // no viewBox, use width/height
     attributes.viewBox = `0 0 ${width} ${height}`
   }
 
