@@ -2,6 +2,12 @@
 
 > ⚠️ - Breaking changes
 
+## 0.6.0
+
+- ⚠️ Renamed `shopping` to `market`.
+- ⚠️ Renamed `yuan-circle` to `cny-circle`.
+- Added 35 new icons.
+
 ## 0.5.0
 
 - ⚠️ Renamed `triangle-*` to `caret-*`.
