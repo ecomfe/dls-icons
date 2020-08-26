@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.8.0
+
+- Add 4 new icons.
+
 ## 0.7.1
 
 - Removed deprecated icon files from package.
