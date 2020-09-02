@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.11.0
+
+- Added 4 new icons.
+
 ## 0.10.0
 
 - ⚠️ Renamed `storage` to `save`.
