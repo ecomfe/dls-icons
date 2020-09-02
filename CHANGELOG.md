@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 0.9.0
+
+- ⚠️ Renamed `plus-square-circle` to `plus-square`.
+- Added `report` and `report-check`.
+
 ## 0.8.0
 
 - Add 4 new icons.
