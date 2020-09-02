@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.10.0
+
+- ⚠️ Renamed `storage` to `save`.
+
 ## 0.9.0
 
 - ⚠️ Renamed `plus-square-circle` to `plus-square`.
