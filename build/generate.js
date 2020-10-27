@@ -124,6 +124,10 @@ async function generate() {
   })
 }
 
+function sortFileData(f1, f2) {
+  return f1.slug > f2.slug ? 1 : -1
+}
+
 async function getSVGFiles() {
   if (ENDPOINT) {
     let { data } = JSON.parse(await fetch(ENDPOINT).then((res) => res.text()))
@@ -138,10 +142,12 @@ async function getSVGFiles() {
       )
     })
 
-    return data.map(({ label, svg }) => ({
-      slug: label.replace(/_/g, '-'),
-      content: svg,
-    }))
+    return data
+      .map(({ label, svg }) => ({
+        slug: label.replace(/_/g, '-'),
+        content: svg,
+      }))
+      .sort(sortFileData)
   } else {
     return fs
       .readdirSync(RAW_DIR)
@@ -154,6 +160,7 @@ async function getSVGFiles() {
           content,
         }
       })
+      .sort(sortFileData)
   }
 }
 
