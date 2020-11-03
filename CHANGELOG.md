@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.13.0
+
+- Added 4 new icons.
+
 ## 0.12.1
 
 - Updated 5 icons.
