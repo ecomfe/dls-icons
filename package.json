@@ -21,7 +21,7 @@
     "lerna": "^3.21.0",
     "lodash": "^4.17.19",
     "mkdirp": "^1.0.4",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "stringify-object": "^3.3.0",
