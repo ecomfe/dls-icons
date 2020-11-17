@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 0.14.0
+
+- ⚠️ Renamed `menu` to `apps`.
+- Added `apps-settings` and `bell`.
+
 ## 0.13.0
 
 - Added 4 new icons.
