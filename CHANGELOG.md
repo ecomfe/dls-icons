@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.15.0
+
+- Fix compile hint for Terser to enable treeshake properly.
+
 ## 0.14.0
 
 - ⚠️ Renamed `menu` to `apps`.

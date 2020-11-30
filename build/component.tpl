@@ -1,4 +1,4 @@
 import createIcon from '../createIcon'
 
-const Icon{name} = createIcon({icon})
+const Icon{name} = /*#__PURE__*/createIcon({icon})
 export default Icon{name}

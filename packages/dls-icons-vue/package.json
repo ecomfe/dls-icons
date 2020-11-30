@@ -11,6 +11,9 @@
   },
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
+  "sideEffects": [
+    "*.css"
+  ],
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
