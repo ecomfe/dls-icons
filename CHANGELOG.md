@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.16.0
+
+- Added `shopping-cart`.
+
 ## 0.15.0
 
 - Fix compile hint for Terser to enable treeshake properly.
