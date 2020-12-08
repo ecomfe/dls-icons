@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.17.0
+
+- Added `film`.
+
 ## 0.16.0
 
 - Added `shopping-cart`.
