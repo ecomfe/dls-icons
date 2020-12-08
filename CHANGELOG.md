@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.18.0
+
+- Added `low-square`/`medium-square`/`high-square`.
+
 ## 0.17.0
 
 - Added `film`.
