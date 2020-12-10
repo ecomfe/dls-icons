@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.19.0
+
+= Added `arrow-{up,right,down,left}-solid`.
+
 ## 0.18.0
 
 - Added `low-square`/`medium-square`/`high-square`.
