@@ -2,9 +2,13 @@
 
 > ⚠️ - Breaking changes
 
+## 0.20.0
+
+- Added `hospital`.
+
 ## 0.19.0
 
-= Added `arrow-{up,right,down,left}-solid`.
+- Added `arrow-{up,right,down,left}-solid`.
 
 ## 0.18.0
 
