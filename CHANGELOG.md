@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.21.0
+
+- Added `treasure-chest`, `bulb`, `line-chart-alt`, `video-history`.
+
 ## 0.20.0
 
 - Added `hospital`.
