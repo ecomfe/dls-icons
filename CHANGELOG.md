@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.23.0
+
+- Added `recommend-square`.
+
 ## 0.22.0
 
 - Added `video-crop`, `video-film`.
