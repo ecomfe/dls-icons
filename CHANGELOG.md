@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.23.1
+
+- Updated `chat`.
+
 ## 0.23.0
 
 - Added `recommend-square`.
