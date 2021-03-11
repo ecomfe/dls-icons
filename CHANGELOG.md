@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 0.24.0
+
+- Added `smiley`.
+- Updated `compass`.
+
 ## 0.23.1
 
 - Updated `chat`.
