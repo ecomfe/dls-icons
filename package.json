@@ -17,6 +17,7 @@
   "author": "Justineo <justice360@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "comment-mark": "^1.0.0",
     "esm": "^3.2.25",
     "lerna": "^3.21.0",
     "lodash": "^4.17.19",

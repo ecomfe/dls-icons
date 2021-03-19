@@ -6,6 +6,7 @@ import rimraf from 'rimraf'
 import svgson, { stringify } from 'svgson'
 import stringifyObject from 'stringify-object'
 import { camelCase, upperFirst } from 'lodash'
+import commentMark from 'comment-mark'
 import Svgo from 'svgo'
 const svgo = new Svgo({
   multipass: true,
@@ -17,8 +18,12 @@ const ENDPOINT = process.env.DLS_ICONS_API
 const RAW_DIR = path.resolve(__dirname, '../raw')
 const SVG_DIR = path.resolve(__dirname, '../svg')
 const ICON_PATTERN = /^(.+)\.svg$/
-const MODULE_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'component.tpl'),
+const ICON_MODULE_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'icon.tpl'),
+  'utf8'
+)
+const DATA_MODULE_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'data.tpl'),
   'utf8'
 )
 const EXPORT_TPL = fs.readFileSync(
@@ -34,6 +39,15 @@ function getPackDir(name) {
 function clearDir(dir) {
   rimraf.sync(dir)
   mkdirp.sync(dir)
+}
+
+function renderTpl(tpl, data) {
+  for (let key in data) {
+    if (data.hasOwnProperty(key)) {
+      tpl = tpl.replace(new RegExp(`{${key}}`, 'g'), data[key])
+    }
+  }
+  return tpl
 }
 
 async function generate() {
@@ -54,7 +68,8 @@ async function generate() {
 
       fs.writeFileSync(path.join(SVG_DIR, file), svg, 'utf8')
 
-      let name = upperFirst(camelCase(slug))
+      let name = camelCase(slug)
+      let Name = upperFirst(name)
 
       let iconCode = stringifyObject(
         {
@@ -68,34 +83,43 @@ async function generate() {
         }
       )
 
-      let moduleCode = MODULE_TPL.replace(/\{slug\}/g, slug)
-        .replace(/\{name\}/g, name)
-        .replace(/\{icon\}/g, iconCode)
+      let tplData = {
+        name,
+        Name,
+        icon: iconCode,
+      }
+
+      let iconModuleCode = renderTpl(ICON_MODULE_TPL, tplData)
+      let dataModuleCode = renderTpl(DATA_MODULE_TPL, tplData)
 
       ICON_PACKS.forEach((pack) => {
         let iconsDir = path.join(getPackDir(pack), 'src/icons')
-        fs.writeFileSync(path.join(iconsDir, `${name}.js`), moduleCode, 'utf8')
+        fs.writeFileSync(
+          path.join(iconsDir, `${Name}.js`),
+          iconModuleCode,
+          'utf8'
+        )
+        fs.writeFileSync(
+          path.join(iconsDir, `data${Name}.js`),
+          dataModuleCode,
+          'utf8'
+        )
       })
 
-      return { slug, name, file }
+      return { slug, name, Name, file }
     })
   ).then((icons) => {
     let exportFile =
-      icons
-        .map(({ slug, name }) =>
-          EXPORT_TPL.replace(/\{slug\}/g, slug).replace(/\{name\}/g, name)
-        )
-        .join('') + `export createIcon from './createIcon'\n`
+      icons.map((data) => renderTpl(EXPORT_TPL, data)).join('') +
+      `export createIcon from './createIcon'\n`
 
     ICON_PACKS.forEach((pack) => {
       let packDir = getPackDir(pack)
       fs.writeFileSync(path.join(packDir, `src/index.js`), exportFile, 'utf8')
 
       let readmeFile = path.join(packDir, 'README.md')
-      let readmeTpl = fs.readFileSync(
-        path.join(packDir, 'build/readme.tpl'),
-        'utf8'
-      )
+      let readmeContent = fs.readFileSync(readmeFile, 'utf8')
+
       let cols = 5
       let iconTable =
         '<table><tbody>' +
@@ -116,8 +140,13 @@ async function generate() {
           .map((row) => `<tr>${row}</tr>`)
           .join('') +
         '</tbody></table>'
-      let readme = readmeTpl.replace(/{iconTable}/g, iconTable)
-      fs.writeFileSync(readmeFile, readme, 'utf8')
+      fs.writeFileSync(
+        readmeFile,
+        commentMark(readmeContent, {
+          icons: iconTable,
+        }),
+        'utf8'
+      )
     })
 
     console.log(`Normalized ${icons.length} icons.`)

@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.25.0
+
+- Added icon data exports via `data<Name>`.
+
 ## 0.24.0
 
 - Added `smiley`.
