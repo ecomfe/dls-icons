@@ -131,7 +131,7 @@ async function generate() {
                 (icon) =>
                   `<td align="center">${
                     icon
-                      ? `<img src="https://raw.githubusercontent.com/ecomfe/dls-icons/master/svg/${icon.file}" height="24"/><br/><sub>Icon${icon.name}</sub>`
+                      ? `<img src="https://raw.githubusercontent.com/ecomfe/dls-icons/master/svg/${icon.file}" height="24"/><br/><sub>Icon${icon.Name}</sub>`
                       : ''
                   }</td>`
               )
