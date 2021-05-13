@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.26.0
+
+- Added `ab-test`, `full-square`, `pie-chart`, `rotate-clockwise`, `rotate-anticlockwise`, `yingxiaotong`.
+
 ## 0.25.0
 
 - Added icon data exports via `data<Name>`.
