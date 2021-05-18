@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.27.0
+
+- Fixed codegen to prevent binding conflict for icon and data names (icon names start with `data`).
+
 ## 0.26.0
 
 - Added `ab-test`, `full-square`, `pie-chart`, `rotate-clockwise`, `rotate-anticlockwise`, `yingxiaotong`.

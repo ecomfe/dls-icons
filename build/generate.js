@@ -100,7 +100,7 @@ async function generate() {
           'utf8'
         )
         fs.writeFileSync(
-          path.join(iconsDir, `data${Name}.js`),
+          path.join(iconsDir, `data_${Name}.js`),
           dataModuleCode,
           'utf8'
         )
