@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.28.0
+
+- Added `shield-check`.
+
 ## 0.27.0
 
 - Fixed codegen to prevent binding conflict for icon and data names (icon names start with `data`).
