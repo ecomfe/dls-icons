@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.29.0
+
+- Added `trophy`.
+
 ## 0.28.0
 
 - Added `shield-check`.
