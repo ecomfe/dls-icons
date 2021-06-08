@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 0.30.0
+
+- Added `list-ordered`, `list-unordered`, `paint-bucket`.
+- Updated `bold`.
+
 ## 0.29.0
 
 - Added `trophy`.
