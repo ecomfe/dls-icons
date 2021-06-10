@@ -2,6 +2,9 @@
 
 > ⚠️ - Breaking changes
 
+## 0.31.0
+
+- Added `clock-solid`.
 ## 0.30.0
 
 - Added `list-ordered`, `list-unordered`, `paint-bucket`.
