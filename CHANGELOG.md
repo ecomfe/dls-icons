@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 0.32.0
+
+- Added `infoflow`, `feedback-solid`.
+
 ## 0.31.0
 
 - Added `clock-solid`.
