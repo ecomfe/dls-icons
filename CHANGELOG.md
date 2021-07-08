@@ -2,6 +2,9 @@
 
 > ⚠️ - Breaking changes
 
+## 0.33.0
+
+- Added `star-half`.
 ## 0.32.0
 
 - Added `infoflow`, `feedback-solid`.
