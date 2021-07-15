@@ -1,5 +1,5 @@
 {
-  "name": "dls-icons-vue",
+  "name": "dls-icons-vue-3",
   "version": "0.33.0",
   "description": "DLS icons for Vue.",
   "author": {
@@ -40,6 +40,6 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "vue": "2.x"
+    "vue": "3.x"
   }
 }

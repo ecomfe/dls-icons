@@ -30,7 +30,7 @@ const EXPORT_TPL = fs.readFileSync(
   path.resolve(__dirname, 'export.tpl'),
   'utf8'
 )
-const ICON_PACKS = ['dls-icons-react', 'dls-icons-vue']
+const ICON_PACKS = ['dls-icons-react', 'dls-icons-vue', 'dls-icons-vue-3']
 
 function getPackDir(name) {
   return path.resolve(__dirname, `../packages/${name}`)
