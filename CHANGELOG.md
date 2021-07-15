@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 1.0.0
+
+- Added `quality-circle`.
+- Added Vue 3 support @ `dls-icons-vue-3`.
+
 ## 0.33.0
 
 - Added `star-half`.
