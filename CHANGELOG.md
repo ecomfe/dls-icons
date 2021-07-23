@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.1.0
+
+- Added `envelope-open`.
+
 ## 1.0.0
 
 - Added `quality-circle`.
