@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.2.0
+
+- Added `upgrade`.
+
 ## 1.1.0
 
 - Added `envelope-open`.
