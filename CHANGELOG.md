@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.4.0
+
+- Added `customer-service`, `star-dash`.
+
 ## 1.3.0
 
 - Added `truck`.
