@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.5.0
+
+- Added `eye-tracking`, `tag-solid`.
+
 ## 1.4.0
 
 - Added `customer-service`, `star-dash`.
