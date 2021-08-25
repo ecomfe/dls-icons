@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.6.0
+
+- Added `camera-add`, `truck-solid`, `box`.
+
 ## 1.5.0
 
 - Added `eye-tracking`, `tag-solid`.
