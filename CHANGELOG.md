@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.7.0
+
+- Added `building`.
+
 ## 1.6.0
 
 - Added `camera-add`, `truck-solid`, `box`.
