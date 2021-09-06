@@ -22,7 +22,7 @@ const DATA_TPL = fs.readFileSync(
   path.resolve(__dirname, 'data/data.tpl'),
   'utf8'
 )
-const DATA_INDEX_TPL = fs.readFileSync(
+const DATA_EXPORT_TPL = fs.readFileSync(
   path.resolve(__dirname, 'data/export.tpl'),
   'utf8'
 )
@@ -30,7 +30,7 @@ const ICON_TPL = fs.readFileSync(
   path.resolve(__dirname, 'icon/icon.tpl'),
   'utf8'
 )
-const ICON_INDEX_TPL = fs.readFileSync(
+const ICON_EXPORT_TPL = fs.readFileSync(
   path.resolve(__dirname, 'icon/export.tpl'),
   'utf8'
 )
@@ -111,18 +111,20 @@ async function generate() {
     })
   ).then((icons) => {
     let dataIndex = icons
-      .map((data) => renderTpl(DATA_INDEX_TPL, data))
+      .map((data) => renderTpl(DATA_EXPORT_TPL, data))
       .join('')
 
     fs.writeFileSync(path.join(DATA_DIR, 'index.js'), dataIndex, 'utf8')
 
     let iconIndex =
-      icons.map((data) => renderTpl(ICON_INDEX_TPL, data)).join('') +
+      icons.map((data) => renderTpl(ICON_EXPORT_TPL, data)).join('') +
       `export createIcon from './createIcon'\n`
 
     ICON_PACKS.concat(DATA_PACK).forEach((pack) => {
       let packDir = getPackDir(pack)
-      fs.writeFileSync(path.join(packDir, 'src/index.js'), iconIndex, 'utf8')
+      if (pack !== DATA_PACK) {
+        fs.writeFileSync(path.join(packDir, 'src/index.js'), iconIndex, 'utf8')
+      }
 
       let readmeFile = path.join(packDir, 'README.md')
       let readmeContent = fs.readFileSync(readmeFile, 'utf8')
