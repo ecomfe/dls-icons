@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.8.0
+
+- Added package `dls-icons-data` so that icon data can be shared across different packages.
+
 ## 1.7.0
 
 - Added `building`.

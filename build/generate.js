@@ -18,23 +18,29 @@ const ENDPOINT = process.env.DLS_ICONS_API
 const RAW_DIR = path.resolve(__dirname, '../raw')
 const SVG_DIR = path.resolve(__dirname, '../svg')
 const ICON_PATTERN = /^(.+)\.svg$/
-const ICON_MODULE_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'icon.tpl'),
+const DATA_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'data/data.tpl'),
   'utf8'
 )
-const DATA_MODULE_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'data.tpl'),
+const DATA_INDEX_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'data/export.tpl'),
   'utf8'
 )
-const EXPORT_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'export.tpl'),
+const ICON_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'icon/icon.tpl'),
+  'utf8'
+)
+const ICON_INDEX_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'icon/export.tpl'),
   'utf8'
 )
 const ICON_PACKS = ['dls-icons-react', 'dls-icons-vue', 'dls-icons-vue-3']
 
-function getPackDir(name) {
-  return path.resolve(__dirname, `../packages/${name}`)
+function getPackDir(name, ...rest) {
+  return path.resolve(__dirname, `../packages/${name}`, ...rest)
 }
+
+const DATA_DIR = getPackDir('dls-icons-data', 'src')
 
 function clearDir(dir) {
   rimraf.sync(dir)
@@ -52,6 +58,7 @@ function renderTpl(tpl, data) {
 
 async function generate() {
   clearDir(SVG_DIR)
+  clearDir(path.join(DATA_DIR, 'icons'))
 
   ICON_PACKS.forEach((pack) => {
     let iconsDir = path.join(getPackDir(pack), 'src/icons')
@@ -89,33 +96,32 @@ async function generate() {
         icon: iconCode,
       }
 
-      let iconModuleCode = renderTpl(ICON_MODULE_TPL, tplData)
-      let dataModuleCode = renderTpl(DATA_MODULE_TPL, tplData)
+      let dataModuleCode = renderTpl(DATA_TPL, tplData)
+      let iconModuleCode = renderTpl(ICON_TPL, tplData)
+
+      fs.writeFileSync(path.join(DATA_DIR, `icons/${Name}.js`), dataModuleCode, 'utf8')
 
       ICON_PACKS.forEach((pack) => {
         let iconsDir = path.join(getPackDir(pack), 'src/icons')
-        fs.writeFileSync(
-          path.join(iconsDir, `${Name}.js`),
-          iconModuleCode,
-          'utf8'
-        )
-        fs.writeFileSync(
-          path.join(iconsDir, `data_${Name}.js`),
-          dataModuleCode,
-          'utf8'
-        )
+        fs.writeFileSync(path.join(iconsDir, `${Name}.js`), iconModuleCode, 'utf8')
       })
 
       return { slug, name, Name, file }
     })
   ).then((icons) => {
-    let exportFile =
-      icons.map((data) => renderTpl(EXPORT_TPL, data)).join('') +
+    let dataIndex = icons
+      .map((data) => renderTpl(DATA_INDEX_TPL, data))
+      .join('')
+
+    fs.writeFileSync(path.join(DATA_DIR, 'index.js'), dataIndex, 'utf8')
+
+    let iconIndex =
+      icons.map((data) => renderTpl(ICON_INDEX_TPL, data)).join('') +
       `export createIcon from './createIcon'\n`
 
-    ICON_PACKS.forEach((pack) => {
+    ICON_PACKS.concat('dls-icons-data').forEach((pack) => {
       let packDir = getPackDir(pack)
-      fs.writeFileSync(path.join(packDir, `src/index.js`), exportFile, 'utf8')
+      fs.writeFileSync(path.join(packDir, 'src/index.js'), iconIndex, 'utf8')
 
       let readmeFile = path.join(packDir, 'README.md')
       let readmeContent = fs.readFileSync(readmeFile, 'utf8')

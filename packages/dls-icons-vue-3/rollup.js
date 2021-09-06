@@ -1,8 +1,6 @@
 import { rollup } from 'rollup'
-import json from '@rollup/plugin-json'
 import alias from '@rollup/plugin-alias'
 import babel from 'rollup-plugin-babel'
-import { string } from 'rollup-plugin-string'
 import autoExternal from 'rollup-plugin-auto-external'
 import resolve from 'rollup-plugin-node-resolve'
 import css from 'rollup-plugin-postcss'
@@ -35,11 +33,7 @@ const main = async () => {
         }
       ]
     }),
-    json(),
     css(),
-    string({
-      include: '../../svg/*.svg',
-    }),
     babel(babelConfig),
     autoExternal({ dependencies: false }),
   ]
