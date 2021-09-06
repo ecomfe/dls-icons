@@ -35,12 +35,13 @@ const ICON_INDEX_TPL = fs.readFileSync(
   'utf8'
 )
 const ICON_PACKS = ['dls-icons-react', 'dls-icons-vue', 'dls-icons-vue-3']
+const DATA_PACK = 'dls-icons-data'
 
 function getPackDir(name, ...rest) {
   return path.resolve(__dirname, `../packages/${name}`, ...rest)
 }
 
-const DATA_DIR = getPackDir('dls-icons-data', 'src')
+const DATA_DIR = getPackDir(DATA_PACK, 'src')
 
 function clearDir(dir) {
   rimraf.sync(dir)
@@ -119,7 +120,7 @@ async function generate() {
       icons.map((data) => renderTpl(ICON_INDEX_TPL, data)).join('') +
       `export createIcon from './createIcon'\n`
 
-    ICON_PACKS.concat('dls-icons-data').forEach((pack) => {
+    ICON_PACKS.concat(DATA_PACK).forEach((pack) => {
       let packDir = getPackDir(pack)
       fs.writeFileSync(path.join(packDir, 'src/index.js'), iconIndex, 'utf8')
 
@@ -127,6 +128,7 @@ async function generate() {
       let readmeContent = fs.readFileSync(readmeFile, 'utf8')
 
       let cols = 5
+      let prefix = pack === DATA_PACK ? 'data' : 'Icon'
       let iconTable =
         '<table><tbody>' +
         Array.from({ length: Math.ceil(icons.length / cols) })
@@ -137,7 +139,7 @@ async function generate() {
                 (icon) =>
                   `<td align="center">${
                     icon
-                      ? `<img src="https://raw.githubusercontent.com/ecomfe/dls-icons/master/svg/${icon.file}" height="24"/><br/><sub>Icon${icon.Name}</sub>`
+                      ? `<img src="https://raw.githubusercontent.com/ecomfe/dls-icons/master/svg/${icon.file}" height="24"/><br/><sub>${prefix}${icon.Name}</sub>`
                       : ''
                   }</td>`
               )
