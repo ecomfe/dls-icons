@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.9.0
+
+- Added `arrow-to-top-solid`, `ellipsis-circle-solid`, `star-dash-solid`, `font-size`, `letter-spacing`, `line-height`.
+
 ## 1.8.0
 
 - Added package `dls-icons-data` so that icon data can be shared across different packages.

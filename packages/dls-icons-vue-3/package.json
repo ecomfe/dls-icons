@@ -14,6 +14,9 @@
   "sideEffects": [
     "*.css"
   ],
+  "dependencies": {
+    "dls-icons-data": "1.8.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
