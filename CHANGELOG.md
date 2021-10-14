@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 1.10.0
+
+- Added `unlink`, `four-dots`.
+- Updated `link`.
+
 ## 1.9.0
 
 - Added `arrow-to-top-solid`, `ellipsis-circle-solid`, `star-dash-solid`, `font-size`, `letter-spacing`, `line-height`.
