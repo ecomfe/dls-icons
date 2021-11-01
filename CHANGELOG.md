@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.11.0
+
+- Added `magic-wand`, `magic-wand-solid`.
+
 ## 1.10.0
 
 - Added `unlink`, `four-dots`.
