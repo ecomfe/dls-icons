@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.11.1
+
+- Updated `eyedropper`.
+
 ## 1.11.0
 
 - Added `magic-wand`, `magic-wand-solid`.
