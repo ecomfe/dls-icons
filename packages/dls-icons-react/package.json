@@ -1,6 +1,6 @@
 {
   "name": "dls-icons-react",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "DLS icons for React.",
   "author": {
     "name": "zhanglili01,huoyuxuan,lisiqi06,guyiling"
@@ -15,7 +15,7 @@
     "*.css"
   ],
   "dependencies": {
-    "dls-icons-data": "^1.11.0"
+    "dls-icons-data": "^1.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
