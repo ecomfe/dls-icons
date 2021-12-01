@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 1.12.0
+
+- Added `paste`.
+
 ## 1.11.1
 
 - Updated `eyedropper`.
