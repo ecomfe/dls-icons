@@ -2,6 +2,12 @@
 
 > ⚠️ - Breaking changes
 
+## 2.0.0
+
+- ⚠️ Renamed `full-square` to `full-circle`.
+- ⚠️ Renamed `quality-circle` to `grade-circle`.
+- Added new `quality-circle`.
+
 ## 1.12.0
 
 - Added `paste`.
