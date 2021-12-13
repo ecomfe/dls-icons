@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.1.0
+
+- Added `drag-indicator`.
+
 ## 2.0.0
 
 - ⚠️ Renamed `full-square` to `full-circle`.
