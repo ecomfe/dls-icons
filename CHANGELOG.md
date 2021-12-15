@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.2.0
+
+- Added `font`.
+
 ## 2.1.0
 
 - Added `drag-indicator`.
