@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.2.1
+
+- Made directives work for Vue 2 version.
+
 ## 2.2.0
 
 - Added `font`.

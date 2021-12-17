@@ -12,7 +12,7 @@ export default function createIcon({ name, content, width, height }) {
     functional: true,
     name,
     props: {
-      spin: Boolean
+      spin: Boolean,
     },
     render(h, { props = {}, data = {} }) {
       const {
@@ -21,6 +21,7 @@ export default function createIcon({ name, content, width, height }) {
         style,
         attrs: { title, ...attrs } = {},
         on,
+        ...rest
       } = data
       const { tabindex } = attrs
 
@@ -45,6 +46,7 @@ export default function createIcon({ name, content, width, height }) {
           innerHTML:
             (title ? `<title>${escapeHTML(title)}</title>` : '') + content,
         },
+        ...rest,
       })
     },
   }
