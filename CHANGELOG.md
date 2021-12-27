@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.3.0
+
+- Added 17 new icons.
+
 ## 2.2.1
 
 - Made directives work for Vue 2 version.
