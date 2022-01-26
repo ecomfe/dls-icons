@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 2.4.0
+
+- Made a major overhaul to 267 icons to improve style.
+- Added `align-top`, `align-bottom`, `list-checked`, `path`, `pause-circle-solid` and `user-circle-solid`.
+
 ## 2.3.0
 
 - Added 17 new icons.
