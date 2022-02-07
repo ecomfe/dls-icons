@@ -1,6 +1,6 @@
 {
   "name": "dls-icons-vue-3",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "DLS icons for Vue.",
   "author": {
     "name": "guyiling"
@@ -15,7 +15,7 @@
     "*.css"
   ],
   "dependencies": {
-    "dls-icons-data": "^2.4.0"
+    "dls-icons-data": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
