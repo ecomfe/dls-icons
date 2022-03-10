@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.5.0
+
+- Added `exclamation-triangle`, `exclamation-triangle-solid` and `import`.
+
 ## 2.4.0
 
 - Made a major overhaul to 267 icons to improve style.
