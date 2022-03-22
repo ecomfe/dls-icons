@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 2.6.0
+
+- Added `bell-solid`, `cloud-upload-solid`, `team`, `team-solid`, `shield-wave-solid`, `rocket-solid`, `pie-chart-solid` and `box-solid`.
+- Updated `bell`.
+
 ## 2.5.0
 
 - Added `exclamation-triangle`, `exclamation-triangle-solid` and `import`.
