@@ -1,6 +1,6 @@
 import { rollup } from 'rollup'
-import babel from 'rollup-plugin-babel'
-import resolve from 'rollup-plugin-node-resolve'
+import babel from '@rollup/plugin-babel'
+import resolve from '@rollup/plugin-node-resolve'
 
 const babelConfig = {
   presets: [
@@ -9,20 +9,16 @@ const babelConfig = {
       {
         modules: false,
       },
-    ]
+    ],
   ],
-  plugins: [
-    '@babel/plugin-proposal-export-default-from'
-  ],
+  plugins: ['@babel/plugin-proposal-export-default-from'],
   exclude: 'node_modules/**',
   extensions: ['.js'],
+  babelHelpers: 'bundled',
 }
 
 const main = async () => {
-  const plugins = [
-    resolve(),
-    babel(babelConfig)
-  ]
+  const plugins = [resolve(), babel(babelConfig)]
 
   const inputOptions = {
     context: __dirname,

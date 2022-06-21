@@ -1,12 +1,13 @@
 {
   "name": "dls-icons",
-  "version": "0.0.0",
+  "version": "2.6.0",
   "description": "Icons for Baidu DLS.",
   "main": "index.js",
   "scripts": {
     "generate": "node -r esm build/generate.js",
-    "build": "npm run generate && lerna run build",
-    "prepare": "lerna bootstrap && npm run build"
+    "build": "pnpm generate && pnpm -r build",
+    "prepare": "pnpm build",
+    "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
   },
   "keywords": [
     "svg",
@@ -17,16 +18,16 @@
   "author": "Justineo <justice360@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "bumpp": "^7.1.1",
     "comment-mark": "^1.0.0",
     "esm": "^3.2.25",
-    "lerna": "^3.21.0",
     "lodash": "^4.17.19",
     "mkdirp": "^1.0.4",
     "node-fetch": "^2.6.1",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
     "stringify-object": "^3.3.0",
-    "svgo": "^1.3.2",
-    "svgson": "^4.1.0"
+    "svgo": "^2.8.0",
+    "svgson": "^5.2.1"
   }
 }

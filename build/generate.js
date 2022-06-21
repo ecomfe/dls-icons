@@ -1,18 +1,43 @@
 import fs from 'fs'
 import path from 'path'
+import { createHash } from 'crypto'
 import fetch from 'node-fetch'
 import mkdirp from 'mkdirp'
 import rimraf from 'rimraf'
-import svgson, { stringify } from 'svgson'
+import { parse, stringify } from 'svgson'
 import stringifyObject from 'stringify-object'
 import { camelCase, upperFirst } from 'lodash'
 import commentMark from 'comment-mark'
-import Svgo from 'svgo'
-const svgo = new Svgo({
-  multipass: true,
-  removeViewBox: false,
-  floatPrecision: 3,
-})
+import { optimize } from 'svgo'
+
+function getSVGOConfig ({ id }) {
+  return {
+    multipass: true,
+    plugins: [
+      {
+        name: 'preset-default',
+        params: {
+          overrides: {
+            removeViewBox: false,
+            inlineStyles: false,
+            convertStyleToAttrs: false,
+            minifyStyles: false,
+            removeDimensions: false,
+            cleanupIDs: {
+              prefix: `dls-${id}-`
+            },
+            cleanupNumericValues: {
+              floatPrecision: 3
+            }
+          }
+        }
+      },
+      {
+        name: 'sortAttrs'
+      }
+    ]
+  }
+}
 
 const ENDPOINT = process.env.DLS_ICONS_API
 const RAW_DIR = path.resolve(__dirname, '../raw')
@@ -204,13 +229,17 @@ async function getSVGFiles() {
 }
 
 async function normalizeSVG(content, file) {
-  let { error, data } = await svgo.optimize(content)
+  const shasum = createHash('sha1')
+  shasum.update(content)
+  const id = shasum.digest('hex').substring(0, 5)
+
+  let { error, data } = await optimize(content, getSVGOConfig({ id }))
   if (error) {
     console.error(file, error)
     return
   }
 
-  let el = await svgson(data)
+  let el = await parse(data)
   console.log(`Normalizing ${file}...`)
   let { attributes } = el
   let { width, height, viewBox } = attributes

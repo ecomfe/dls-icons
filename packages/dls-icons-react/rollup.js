@@ -1,10 +1,11 @@
+import path from 'path'
 import { rollup } from 'rollup'
 import alias from '@rollup/plugin-alias'
-import babel from 'rollup-plugin-babel'
+import babel from '@rollup/plugin-babel'
+import resolve from '@rollup/plugin-node-resolve'
 import autoExternal from 'rollup-plugin-auto-external'
-import resolve from 'rollup-plugin-node-resolve'
 import css from 'rollup-plugin-postcss'
-import path from 'path'
+import cssnano from 'cssnano'
 
 const babelConfig = {
   presets: [
@@ -22,6 +23,7 @@ const babelConfig = {
   ],
   exclude: 'node_modules/**',
   extensions: ['.js'],
+  babelHelpers: 'bundled',
 }
 
 const main = async () => {
@@ -31,11 +33,11 @@ const main = async () => {
       entries: [
         {
           find: '@',
-          replacement: path.resolve(__dirname, '../../src')
-        }
-      ]
+          replacement: path.resolve(__dirname, '../../src'),
+        },
+      ],
     }),
-    css(),
+    css({ plugins: [cssnano()] }),
     babel(babelConfig),
     autoExternal({ dependencies: false }),
   ]
