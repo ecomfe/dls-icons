@@ -18,9 +18,7 @@ export default function createIcon({ name, content, width, height }) {
       const {
         staticClass,
         class: dynamicClass,
-        style,
         attrs: { title, ...attrs } = {},
-        on,
         ...rest
       } = data
       const { tabindex } = attrs
@@ -33,7 +31,6 @@ export default function createIcon({ name, content, width, height }) {
 
       return h('svg', {
         class: iconClasses,
-        style,
         attrs: {
           width,
           height,
@@ -41,7 +38,6 @@ export default function createIcon({ name, content, width, height }) {
           focusable: tabindex !== '0' ? 'false' : null,
           ...attrs,
         },
-        on,
         domProps: {
           innerHTML:
             (title ? `<title>${escapeHTML(title)}</title>` : '') + content,

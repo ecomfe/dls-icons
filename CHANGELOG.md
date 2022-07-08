@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 2.7.0
+
+- Added 15 new icons.
+- Updated `image` and `puzzle-piece`.
+
 ## 2.6.0
 
 - Added `bell-solid`, `cloud-upload-solid`, `team`, `team-solid`, `shield-wave-solid`, `rocket-solid`, `pie-chart-solid` and `box-solid`.
