@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 2.7.1
+
+- Fixed attributes on the `<svg>` element itself.
+- Added `displayName` for React icons.
+
 ## 2.7.0
 
 - Added 15 new icons.
