@@ -8,14 +8,14 @@ import { mergeProps, h } from 'vue'
 
 const baseClassName = 'dls-icon'
 
-export default function createIcon({ name, content, width, height }) {
+export default function createIcon ({ name, content, attributes }) {
   return {
     name,
     inheritAttrs: false,
     props: {
-      spin: Boolean,
+      spin: Boolean
     },
-    setup(props, { attrs }) {
+    setup (props, { attrs }) {
       const iconClasses = [baseClassName]
 
       if (props.spin) {
@@ -28,18 +28,16 @@ export default function createIcon({ name, content, width, height }) {
           mergeProps(
             {
               class: iconClasses,
-              width,
-              height,
-              viewBox: `0 0 ${width} ${height}`,
+              ...attributes,
               focusable: attrs.tabindex !== '0' ? 'false' : null,
               innerHTML:
                 (attrs.title
                   ? `<title>${escapeHTML(attrs.title)}</title>`
-                  : '') + content,
+                  : '') + content
             },
             attrs
           )
         )
-    },
+    }
   }
 }

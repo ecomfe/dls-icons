@@ -2,8 +2,11 @@
   display: inline-block;
   width: auto;
   height: 1em;
-  fill: currentColor;
   vertical-align: -0.125em;
+}
+
+.dls-icon:not[fill] {
+  fill: currentColor;
 }
 
 .dls-icon-spin {

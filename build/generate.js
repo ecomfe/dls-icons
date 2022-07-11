@@ -62,101 +62,111 @@ const ICON_EXPORT_TPL = fs.readFileSync(
 const ICON_PACKS = ['dls-icons-react', 'dls-icons-vue', 'dls-icons-vue-3']
 const DATA_PACK = 'dls-icons-data'
 
-function getPackDir(name, ...rest) {
+function getPackDir (name, ...rest) {
   return path.resolve(__dirname, `../packages/${name}`, ...rest)
 }
 
 const DATA_DIR = getPackDir(DATA_PACK, 'src')
 
-function clearDir(dir) {
+function clearDir (dir) {
   rimraf.sync(dir)
   mkdirp.sync(dir)
 }
 
-function renderTpl(tpl, data) {
-  for (let key in data) {
-    if (data.hasOwnProperty(key)) {
+function renderTpl (tpl, data) {
+  for (const key in data) {
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
       tpl = tpl.replace(new RegExp(`{${key}}`, 'g'), data[key])
     }
   }
   return tpl
 }
 
-async function generate() {
+async function generate () {
   clearDir(SVG_DIR)
   clearDir(path.join(DATA_DIR, 'icons'))
 
   ICON_PACKS.forEach((pack) => {
-    let iconsDir = path.join(getPackDir(pack), 'src/icons')
+    const iconsDir = path.join(getPackDir(pack), 'src/icons')
     clearDir(iconsDir)
   })
 
   Promise.all(
     (await getSVGFiles()).map(async ({ slug, content }) => {
-      let file = `${slug}.svg`
-      let { el, content: svg, width, height } = await normalizeSVG(
-        content,
-        file
-      )
+      const file = `${slug}.svg`
+      const { el, content: svg } = await normalizeSVG(content, file)
 
       fs.writeFileSync(path.join(SVG_DIR, file), svg, 'utf8')
 
-      let name = camelCase(slug)
-      let Name = upperFirst(name)
+      const name = camelCase(slug)
+      const Name = upperFirst(name)
 
-      let iconCode = stringifyObject(
+      const { width, height, ...attributes } = el.attributes
+
+      const iconCode = stringifyObject(
         {
-          name: `icon-${slug}`,
+          name: `Icon${Name}`,
           content: el.children.map((child) => stringify(child)).join(''),
-          width: Number(width),
-          height: Number(height),
+          attributes: {
+            ...attributes,
+            width: Number(width),
+            height: Number(height)
+          }
         },
         {
-          indent: '  ',
+          indent: '  '
         }
       )
 
-      let tplData = {
+      const tplData = {
         name,
         Name,
-        icon: iconCode,
+        icon: iconCode
       }
 
-      let dataModuleCode = renderTpl(DATA_TPL, tplData)
-      let iconModuleCode = renderTpl(ICON_TPL, tplData)
+      const dataModuleCode = renderTpl(DATA_TPL, tplData)
+      const iconModuleCode = renderTpl(ICON_TPL, tplData)
 
-      fs.writeFileSync(path.join(DATA_DIR, `icons/${Name}.js`), dataModuleCode, 'utf8')
+      fs.writeFileSync(
+        path.join(DATA_DIR, `icons/${Name}.js`),
+        dataModuleCode,
+        'utf8'
+      )
 
       ICON_PACKS.forEach((pack) => {
-        let iconsDir = path.join(getPackDir(pack), 'src/icons')
-        fs.writeFileSync(path.join(iconsDir, `${Name}.js`), iconModuleCode, 'utf8')
+        const iconsDir = path.join(getPackDir(pack), 'src/icons')
+        fs.writeFileSync(
+          path.join(iconsDir, `${Name}.js`),
+          iconModuleCode,
+          'utf8'
+        )
       })
 
       return { slug, name, Name, file }
     })
   ).then((icons) => {
-    let dataIndex = icons
+    const dataIndex = icons
       .map((data) => renderTpl(DATA_EXPORT_TPL, data))
       .join('')
 
     fs.writeFileSync(path.join(DATA_DIR, 'index.js'), dataIndex, 'utf8')
 
-    let iconIndex =
+    const iconIndex =
       icons.map((data) => renderTpl(ICON_EXPORT_TPL, data)).join('') +
-      `export createIcon from './createIcon'\n`
+      'export createIcon from \'./createIcon\'\n'
 
     ICON_PACKS.concat(DATA_PACK).forEach((pack) => {
-      let packDir = getPackDir(pack)
+      const packDir = getPackDir(pack)
       if (pack !== DATA_PACK) {
         fs.writeFileSync(path.join(packDir, 'src/index.js'), iconIndex, 'utf8')
       }
 
-      let readmeFile = path.join(packDir, 'README.md')
-      let readmeContent = fs.readFileSync(readmeFile, 'utf8')
+      const readmeFile = path.join(packDir, 'README.md')
+      const readmeContent = fs.readFileSync(readmeFile, 'utf8')
 
-      let cols = 5
-      let prefix = pack === DATA_PACK ? 'data' : 'Icon'
-      let iconTable =
+      const cols = 5
+      const prefix = pack === DATA_PACK ? 'data' : 'Icon'
+      const iconTable =
         '<table><tbody>' +
         Array.from({ length: Math.ceil(icons.length / cols) })
           .map((_, i) => {
@@ -178,7 +188,7 @@ async function generate() {
       fs.writeFileSync(
         readmeFile,
         commentMark(readmeContent, {
-          icons: iconTable,
+          icons: iconTable
         }),
         'utf8'
       )
@@ -188,13 +198,13 @@ async function generate() {
   })
 }
 
-function sortFileData(f1, f2) {
+function sortFileData (f1, f2) {
   return f1.slug > f2.slug ? 1 : -1
 }
 
-async function getSVGFiles() {
+async function getSVGFiles () {
   if (ENDPOINT) {
-    let { data } = JSON.parse(await fetch(ENDPOINT).then((res) => res.text()))
+    const { data } = JSON.parse(await fetch(ENDPOINT).then((res) => res.text()))
 
     clearDir(RAW_DIR)
 
@@ -209,7 +219,7 @@ async function getSVGFiles() {
     return data
       .map(({ label, svg }) => ({
         slug: label.replace(/_/g, '-'),
-        content: svg,
+        content: svg
       }))
       .sort(sortFileData)
   } else {
@@ -217,35 +227,35 @@ async function getSVGFiles() {
       .readdirSync(RAW_DIR)
       .filter((file) => ICON_PATTERN.test(file))
       .map((file) => {
-        let slug = file.replace(ICON_PATTERN, (_, $1) => $1)
-        let content = fs.readFileSync(path.resolve(RAW_DIR, file), 'utf8')
+        const slug = file.replace(ICON_PATTERN, (_, $1) => $1)
+        const content = fs.readFileSync(path.resolve(RAW_DIR, file), 'utf8')
         return {
           slug,
-          content,
+          content
         }
       })
       .sort(sortFileData)
   }
 }
 
-async function normalizeSVG(content, file) {
+async function normalizeSVG (content, file) {
   const shasum = createHash('sha1')
   shasum.update(content)
   const id = shasum.digest('hex').substring(0, 5)
 
-  let { error, data } = await optimize(content, getSVGOConfig({ id }))
+  const { error, data } = await optimize(content, getSVGOConfig({ id }))
   if (error) {
     console.error(file, error)
     return
   }
 
-  let el = await parse(data)
+  const el = await parse(data)
   console.log(`Normalizing ${file}...`)
-  let { attributes } = el
+  const { attributes } = el
   let { width, height, viewBox } = attributes
 
   if (!viewBox && !(width && height)) {
-    console.error(file, `doesn't contain a valid size declaration.`)
+    console.error(file, 'doesn\'t contain a valid size declaration.')
     console.error(width, height, viewBox)
   } else if (viewBox) {
     // has viewBox, override width/height
@@ -258,15 +268,15 @@ async function normalizeSVG(content, file) {
   }
 
   walkElement(el, {
-    enter(node) {
-      let { attributes } = node
+    enter (node) {
+      const { attributes } = node
 
       delete attributes.class
 
-      let ctxFill = (getContextAttr(node, 'fill') || '').toLowerCase()
-      let ctxStroke = (getContextAttr(node, 'stroke') || '').toLowerCase()
-      let attrFill = (attributes.fill || '').toLowerCase()
-      let attrStroke = (attributes.stroke || '').toLowerCase()
+      const ctxFill = (getContextAttr(node, 'fill') || '').toLowerCase()
+      const ctxStroke = (getContextAttr(node, 'stroke') || '').toLowerCase()
+      const attrFill = (attributes.fill || '').toLowerCase()
+      const attrStroke = (attributes.stroke || '').toLowerCase()
 
       if (attrFill) {
         if (!ctxFill) {
@@ -308,18 +318,18 @@ async function normalizeSVG(content, file) {
           }
         }
       }
-    },
+    }
   })
 
   return {
     el,
     content: stringify(el),
     width,
-    height,
+    height
   }
 }
 
-function walkElement(el, { enter, leave }) {
+function walkElement (el, { enter, leave }) {
   if (typeof enter === 'function') {
     enter(el)
   }
@@ -335,7 +345,7 @@ function walkElement(el, { enter, leave }) {
   }
 }
 
-function getContextAttr(el, attr) {
+function getContextAttr (el, attr) {
   let node = el.parentNode
   while (node) {
     if (node.attributes && node.attributes[attr]) {

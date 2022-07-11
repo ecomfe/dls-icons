@@ -20,6 +20,11 @@
   "devDependencies": {
     "bumpp": "^7.1.1",
     "comment-mark": "^1.0.0",
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
     "esm": "^3.2.25",
     "lodash": "^4.17.19",
     "mkdirp": "^1.0.4",

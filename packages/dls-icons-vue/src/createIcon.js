@@ -7,14 +7,14 @@ import { escapeHTML } from '@/util'
 
 const baseClassName = 'dls-icon'
 
-export default function createIcon({ name, content, width, height }) {
+export default function createIcon ({ name, content, attributes }) {
   return {
     functional: true,
     name,
     props: {
-      spin: Boolean,
+      spin: Boolean
     },
-    render(h, { props = {}, data = {} }) {
+    render (h, { props = {}, data = {} }) {
       const {
         staticClass,
         class: dynamicClass,
@@ -32,18 +32,16 @@ export default function createIcon({ name, content, width, height }) {
       return h('svg', {
         class: iconClasses,
         attrs: {
-          width,
-          height,
-          viewBox: `0 0 ${width} ${height}`,
+          ...attributes,
           focusable: tabindex !== '0' ? 'false' : null,
-          ...attrs,
+          ...attrs
         },
         domProps: {
           innerHTML:
-            (title ? `<title>${escapeHTML(title)}</title>` : '') + content,
+            (title ? `<title>${escapeHTML(title)}</title>` : '') + content
         },
-        ...rest,
+        ...rest
       })
-    },
+    }
   }
 }
