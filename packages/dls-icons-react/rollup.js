@@ -12,18 +12,18 @@ const babelConfig = {
     [
       '@babel/preset-env',
       {
-        modules: false,
-      },
+        modules: false
+      }
     ],
-    '@babel/preset-react',
+    '@babel/preset-react'
   ],
   plugins: [
     '@babel/plugin-proposal-export-default-from',
-    'babel-plugin-react-require',
+    'babel-plugin-react-require'
   ],
   exclude: 'node_modules/**',
   extensions: ['.js'],
-  babelHelpers: 'bundled',
+  babelHelpers: 'bundled'
 }
 
 const main = async () => {
@@ -33,19 +33,19 @@ const main = async () => {
       entries: [
         {
           find: '@',
-          replacement: path.resolve(__dirname, '../../src'),
-        },
-      ],
+          replacement: path.resolve(__dirname, '../../src')
+        }
+      ]
     }),
     css({ plugins: [cssnano()] }),
     babel(babelConfig),
-    autoExternal({ dependencies: false }),
+    autoExternal({ dependencies: false })
   ]
 
   const inputOptions = {
     context: __dirname,
     input: 'src/index.js',
-    plugins: plugins,
+    plugins
   }
 
   const bundle = await rollup(inputOptions)
@@ -53,13 +53,13 @@ const main = async () => {
     format: 'cjs',
     file: 'dist/cjs/index.js',
     sourcemap: true,
-    banner: '/* eslint-disable */',
+    banner: '/* eslint-disable */'
   })
   bundle.write({
     format: 'es',
     file: 'dist/es/index.js',
     sourcemap: true,
-    banner: '/* eslint-disable */',
+    banner: '/* eslint-disable */'
   })
 }
 
