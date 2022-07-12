@@ -7,7 +7,7 @@ import { escapeHTML } from '@/util'
 
 const baseClassName = 'dls-icon'
 
-export default function createIcon ({ name, content, attributes }) {
+export default function createIcon ({ name, content, width, height, attributes }) {
   return {
     functional: true,
     name,
@@ -33,6 +33,8 @@ export default function createIcon ({ name, content, attributes }) {
         class: iconClasses,
         attrs: {
           ...attributes,
+          width,
+          height,
           focusable: tabindex !== '0' ? 'false' : null,
           ...attrs
         },

@@ -8,7 +8,7 @@ import { mergeProps, h } from 'vue'
 
 const baseClassName = 'dls-icon'
 
-export default function createIcon ({ name, content, attributes }) {
+export default function createIcon ({ name, content, width, height, attributes }) {
   return {
     name,
     inheritAttrs: false,
@@ -27,8 +27,10 @@ export default function createIcon ({ name, content, attributes }) {
           'svg',
           mergeProps(
             {
-              class: iconClasses,
               ...attributes,
+              class: iconClasses,
+              width,
+              height,
               focusable: attrs.tabindex !== '0' ? 'false' : null,
               innerHTML:
                 (attrs.title

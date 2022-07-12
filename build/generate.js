@@ -94,24 +94,22 @@ async function generate () {
   Promise.all(
     (await getSVGFiles()).map(async ({ slug, content }) => {
       const file = `${slug}.svg`
-      const { el, content: svg } = await normalizeSVG(content, file)
+      const { el, content: svg, width, height } = await normalizeSVG(content, file)
 
       fs.writeFileSync(path.join(SVG_DIR, file), svg, 'utf8')
 
       const name = camelCase(slug)
       const Name = upperFirst(name)
 
-      const { width, height, ...attributes } = el.attributes
+      const { width: w, height: h, ...attributes } = el.attributes
 
       const iconCode = stringifyObject(
         {
           name: `Icon${Name}`,
           content: el.children.map((child) => stringify(child)).join(''),
-          attributes: {
-            ...attributes,
-            width: Number(width),
-            height: Number(height)
-          }
+          attributes,
+          width: Number(width),
+          height: Number(height)
         },
         {
           indent: '  '

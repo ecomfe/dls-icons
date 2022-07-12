@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.7.2
+
+- Revert the accidental breaking changes for direct dependency on the data format.
+
 ## 2.7.1
 
 - Fixed attributes on the `<svg>` element itself.

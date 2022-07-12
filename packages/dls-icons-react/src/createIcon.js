@@ -7,7 +7,7 @@ import { escapeHTML } from '@/util'
 
 const baseClassName = 'dls-icon'
 
-export default function createIcon ({ name, content, attributes }) {
+export default function createIcon ({ name, content, width, height, attributes }) {
   const Icon = ({ className, title, spin, ...props }) => {
     const iconClasses = [baseClassName, className]
 
@@ -24,6 +24,8 @@ export default function createIcon ({ name, content, attributes }) {
     return (
       <svg
         {...attributes}
+        width={width}
+        height={height}
         className={iconClassName}
         focusable={tabIndex !== '0' ? false : null}
         dangerouslySetInnerHTML={markup}
