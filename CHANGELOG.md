@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 2.8.0
+
+- Added 29 icons.
+- Improved `layer` and `user-mobile`.
+
 ## 2.7.2
 
 - Revert the accidental breaking changes for direct dependency on the data format.
