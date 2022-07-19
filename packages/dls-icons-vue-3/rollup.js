@@ -35,7 +35,7 @@ const main = async () => {
     }),
     css({ plugins: [cssnano()] }),
     babel(babelConfig),
-    autoExternal({ dependencies: false })
+    autoExternal()
   ]
 
   const inputOptions = {

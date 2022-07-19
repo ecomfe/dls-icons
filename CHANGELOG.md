@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.8.1
+
+- Fixed rollup config so that the framework-specific outputs now depend on `dls-icons-data`.
+
 ## 2.8.0
 
 - Added 29 icons.
