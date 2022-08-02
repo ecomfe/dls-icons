@@ -2,9 +2,12 @@
   "name": "dls-icons-react",
   "version": "2.9.0",
   "description": "DLS icons for React.",
-  "author": {
-    "name": "zhanglili01,huoyuxuan,lisiqi06,guyiling"
-  },
+  "contributors": [
+    "zhanglili",
+    "huoyuxuan",
+    "lisiqi",
+    "Justineo (https://github.com/Justineo)"
+  ],
   "scripts": {
     "build": "node -r esm rollup.js",
     "prepublishOnly": "pnpm build"

@@ -2,12 +2,10 @@
   "name": "dls-icons-vue-3",
   "version": "2.9.0",
   "description": "DLS icons for Vue.",
-  "author": {
-    "name": "guyiling"
-  },
+  "author": "Justineo (https://github.com/Justineo)",
   "scripts": {
     "build": "node -r esm rollup.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm build"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
