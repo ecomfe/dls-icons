@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.9.0
+
+- Added `{video,video-film,id-card,id-card-back}-solid`.
+
 ## 2.8.1
 
 - Fixed rollup config so that the framework-specific outputs now depend on `dls-icons-data`.
