@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.10.0
+
+- Added `layout` and `detail-list`.
+
 ## 2.9.0
 
 - Added `{video,video-film,id-card,id-card-back}-solid`.
