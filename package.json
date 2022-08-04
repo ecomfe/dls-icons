@@ -1,6 +1,6 @@
 {
   "name": "dls-icons",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "description": "Icons for Baidu DLS.",
   "main": "index.js",
   "scripts": {
