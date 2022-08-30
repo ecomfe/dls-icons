@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 2.11.0
+
+- Added 57 new `*-solid` icons.
+
 ## 2.10.0
 
 - Added `layout` and `detail-list`.
