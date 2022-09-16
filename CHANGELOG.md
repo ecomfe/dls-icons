@@ -2,6 +2,11 @@
 
 > ⚠️ - Breaking changes
 
+## 3.0.0
+
+- ⚠️ Renamed `user-bookmark` to `excellent-bookmark`. Added a new `user-bookmark` icon.
+- Added 125 new `*-solid` icons.
+
 ## 2.11.0
 
 - Added 57 new `*-solid` icons.
