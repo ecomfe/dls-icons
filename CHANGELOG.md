@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.0.1
+
+- Updated 3 icons.
+
 ## 3.0.0
 
 - ⚠️ Renamed `user-bookmark` to `excellent-bookmark`. Added a new `user-bookmark` icon.
