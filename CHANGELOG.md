@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.1.0
+
+- Added `app-store`, `mini-app-wechat` and `android`.
+
 ## 3.0.1
 
 - Updated 3 icons.
