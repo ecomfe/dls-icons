@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.2.0
+
+- Adde `shield-{cny,times,ellipsis}-solid`.
+
 ## 3.1.0
 
 - Added `app-store`, `mini-app-wechat` and `android`.
