@@ -2,9 +2,13 @@
 
 > ⚠️ - Breaking changes
 
+## 3.3.0
+
+- Added `fire-solid`, `neutral-face{,-solid}` and `frowning-face{,-solid}`.
+
 ## 3.2.0
 
-- Adde `shield-{cny,times,ellipsis}-solid`.
+- Added `shield-{cny,times,ellipsis}-solid`.
 
 ## 3.1.0
 
