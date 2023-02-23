@@ -1,7 +1,7 @@
 {
   "name": "dls-icons",
   "version": "3.3.0",
-  "description": "Icons for Baidu DLS.",
+  "description": "Icons for Baidu Light DLS.",
   "main": "index.js",
   "scripts": {
     "generate": "node -r esm build/generate.js",

@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.4.0
+
+- Added `hourglass{,-solid}`.
+
 ## 3.3.0
 
 - Added `fire-solid`, `neutral-face{,-solid}` and `frowning-face{,-solid}`.
