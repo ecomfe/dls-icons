@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.4.1
+
+- Fixed that fill color is not applied to some of the icons.
+
 ## 3.4.0
 
 - Added `hourglass{,-solid}`.
