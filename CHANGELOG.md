@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.6.0
+
+- Add `gallery{,-solid}`, `expand-alt`, `smiley-star{,-solid}`, `sound-wave`, `update-wave`.
+
 ## 3.5.0
 
 - Add `circle-rotation{,-solid}`.
