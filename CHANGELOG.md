@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.9.0
+
+- Add `fit-width`.
+
 ## 3.8.0
 
 - Add `ai`.
