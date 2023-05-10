@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.8.0
+
+- Add `ai`.
+
 ## 3.7.0
 
 - Add `fullscreen{,-exit}`.
