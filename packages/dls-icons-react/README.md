@@ -12,6 +12,8 @@ npm i -D dls-icons-react
 
 ### As React component
 
+[Demo →](https://stackblitz.com/edit/dls-icons-react-demo?file=src%2FApp.jsx)
+
 ```jsx
 import { IconArrowRight } from 'dls-icons-react'
 
@@ -26,6 +28,32 @@ export default function Title() {
   )
 }
 ```
+
+#### Props
+
+* `spin: boolean`
+
+  Whether the icon is spinning. Default: `false`. You can use `--dls-icon-spin-duration` to customize the time it takes for one turn. The default value is `1s`.
+
+* `active: boolean`
+
+  Whether the icon is active. Default: `undefined`. If `active` is `undefined`, the icon will be in default state. Otherwise it will be in active or inactive state depending on the truthiness of `active`.
+
+  > **Note**
+  > To make `active` prop work properly, you should render a `SharedResources` component in your root component. eg.
+  >
+  > ```jsx
+  > import { SharedResources } from 'dls-icons-react'
+  >
+  > export default function App() {
+  >   return (
+  >     <div className="app">
+  >       <SharedResources />
+  >       ...
+  >     </div>
+  >   )
+  > }
+  > ```
 
 ### As icon data
 

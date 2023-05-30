@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.10.0
+
+- Add `active` prop.
+
 ## 3.9.0
 
 - Add `fit-width`.

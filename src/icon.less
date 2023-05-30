@@ -1,0 +1,58 @@
+@active-id: dls-icon-active;
+
+.dls-icon {
+  display: inline-block;
+  width: auto;
+  height: 1em;
+  vertical-align: -0.125em;
+  color: var(--dls-icon-color);
+
+  &-shared {
+    position: absolute;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  &:not([fill]) {
+    fill: currentColor;
+  }
+
+  &-spin {
+    animation: dls-icon-spin var(--dls-icon-spin-duration, 1s) infinite linear;
+  }
+
+  &-active {
+    path:not([fill="none"], [fill="none"] path),
+    [fill="currentColor"],
+    [fill="currentColor"] :not([fill="none"]) {
+      fill: url("#dls-icon-gradient-active") @dls-color-brand-6;
+    }
+
+    [stroke="currentColor"] {
+      stroke: url("#dls-icon-gradient-active") @dls-color-brand-6;
+    }
+  }
+
+  &-inactive {
+    path:not([fill="none"], [fill="none"] path),
+    [fill="currentColor"],
+    [fill="currentColor"] :not([fill="none"]) {
+      fill: url("#dls-icon-gradient-inactive") @dls-color-gray-4;
+    }
+
+    [stroke="currentColor"] {
+      stroke: url("#dls-icon-gradient-inactive") @dls-color-gray-4;
+    }
+  }
+}
+
+@keyframes dls-icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -151,7 +151,7 @@ async function generate () {
 
     const iconIndex =
       icons.map((data) => renderTpl(ICON_EXPORT_TPL, data)).join('') +
-      'export createIcon from \'./createIcon\'\n'
+      'export { createIcon, SharedResources } from \'./common\'\n'
 
     ICON_PACKS.concat(DATA_PACK).forEach((pack) => {
       const packDir = getPackDir(pack)

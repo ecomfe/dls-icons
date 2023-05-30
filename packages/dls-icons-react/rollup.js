@@ -6,6 +6,7 @@ import resolve from '@rollup/plugin-node-resolve'
 import autoExternal from 'rollup-plugin-auto-external'
 import css from 'rollup-plugin-postcss'
 import cssnano from 'cssnano'
+import dls from 'less-plugin-dls'
 
 const babelConfig = {
   presets: [
@@ -37,7 +38,14 @@ const main = async () => {
         }
       ]
     }),
-    css({ plugins: [cssnano()] }),
+    css({
+      plugins: [cssnano()],
+      use: {
+        less: {
+          plugins: [dls()]
+        }
+      }
+    }),
     babel(babelConfig),
     autoExternal()
   ]

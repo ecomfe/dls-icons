@@ -12,6 +12,8 @@ npm i -D dls-icons-vue-3
 
 ### As Vue component
 
+[Demo →](https://stackblitz.com/edit/dls-icons-vue-3-demo?file=src%2FApp.vue)
+
 ```vue
 <script setup>
 import { IconArrowRight } from 'dls-icons-vue-3'
@@ -26,6 +28,30 @@ import { IconArrowRight } from 'dls-icons-vue-3'
 </div>
 </template>
 ```
+
+#### Props
+
+* `spin: boolean`
+
+  Whether the icon is spinning. Default: `false`. You can use `--dls-icon-spin-duration` to customize the time it takes for one turn. The default value is `1s`.
+
+* `active: boolean`
+
+  Whether the icon is active. Default: `undefined`. If `active` is `undefined`, the icon will be in default state. Otherwise it will be in active or inactive state depending on the truthiness of `active`.
+
+  > **Note**
+  > To make `active` prop work properly, you should render a `SharedResources` component in your root component. eg.
+  >
+  > ```vue
+  > <script setup>
+  > import { SharedResources } from 'dls-icons-vue-3'
+  > </script>
+  >
+  > <template>
+  >   <SharedResources />
+  >   <div id="app">...</div>
+  > </template>
+  > ```
 
 ### As icon data
 

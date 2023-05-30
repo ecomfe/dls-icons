@@ -27,6 +27,8 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "esm": "^3.2.25",
+    "less": "^4.1.3",
+    "less-plugin-dls": "^11.6.3",
     "lodash": "^4.17.19",
     "mkdirp": "^1.0.4",
     "node-fetch": "^2.6.1",
