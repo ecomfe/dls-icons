@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.11.0
+
+- Add `hammer-solid`.
+
 ## 3.10.0
 
 - Add `active` prop.
