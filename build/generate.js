@@ -159,9 +159,6 @@ async function generate () {
         fs.writeFileSync(path.join(packDir, 'src/index.js'), iconIndex, 'utf8')
       }
 
-      const readmeFile = path.join(packDir, 'README.md')
-      const readmeContent = fs.readFileSync(readmeFile, 'utf8')
-
       const cols = 5
       const prefix = pack === DATA_PACK ? 'data' : 'Icon'
       const iconTable =
@@ -183,13 +180,21 @@ async function generate () {
           .map((row) => `<tr>${row}</tr>`)
           .join('') +
         '</tbody></table>'
-      fs.writeFileSync(
-        readmeFile,
-        commentMark(readmeContent, {
-          icons: iconTable
-        }),
-        'utf8'
-      )
+
+      const readmeFiles = ['README.md', 'README.zh-Hans.md']
+
+      readmeFiles.forEach(readme => {
+        const file = path.join(packDir, readme)
+        const content = fs.readFileSync(file, 'utf8')
+
+        fs.writeFileSync(
+          file,
+          commentMark(content, {
+            icons: iconTable
+          }),
+          'utf8'
+        )
+      })
     })
 
     console.log(`Normalized ${icons.length} icons.`)
