@@ -37,35 +37,35 @@ export default {
 
 #### Props
 
-* `spin: boolean`
+##### `spin: boolean`
 
-  Whether the icon is spinning. Default: `false`. You can use `--dls-icon-spin-duration` to customize the time it takes for one turn. The default value is `1s`.
+Whether the icon is spinning. Default: `false`. You can use `--dls-icon-spin-duration` to customize the time it takes for one turn. The default value is `1s`.
 
-* `active: boolean`
+##### `active: boolean`
 
-  Whether the icon is active. Default: `undefined`. If `active` is `undefined`, the icon will be in default state. Otherwise it will be in active or inactive state depending on the truthiness of `active`.
+Whether the icon is active. Default: `undefined`. If `active` is `undefined`, the icon will be in default state. Otherwise it will be in active or inactive state depending on the truthiness of `active`.
 
-  > **Note**
-  > To make `active` prop work properly, you should render a `SharedResources` component in your root component. eg.
-  >
-  > ```vue
-  > <script>
-  > import { SharedResources } from 'dls-icons-vue'
-  >
-  > export default {
-  >   components: {
-  >     SharedResources
-  >   }
-  > }
-  > </script>
-  >
-  > <template>
-  >   <div id="app">
-  >     <shared-resources />
-  >     ...
-  >   </div>
-  > </template>
-  > ```
+> **Note**
+> To make `active` prop work properly, you should render a `SharedResources` component in your root component. eg.
+>
+> ```vue
+> <script>
+> import { SharedResources } from 'dls-icons-vue'
+>
+> export default {
+>   components: {
+>     SharedResources
+>   }
+> }
+> </script>
+>
+> <template>
+>   <div id="app">
+>     <shared-resources />
+>     ...
+>   </div>
+> </template>
+> ```
 
 ### As icon data
 

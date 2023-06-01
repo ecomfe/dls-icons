@@ -37,35 +37,35 @@ export default {
 
 #### Prop
 
-* `spin: boolean`
+##### `spin: boolean`
 
-  图标是否旋转。默认值为 `false`。可以使用 `--dls-icon-spin-duration` 自定义旋转一圈所需的时间。默认值为 `1s`。
+图标是否旋转。默认值为 `false`。可以使用 `--dls-icon-spin-duration` 自定义旋转一圈所需的时间。默认值为 `1s`。
 
-* `active: boolean`
+##### `active: boolean`
 
-  图标是否处于激活状态。默认值为 `undefined`。如果 `active` 为 `undefined`，图标将处于默认状态。否则，根据 `active` 的值，它将处于激活或非激活状态。
+图标是否处于激活状态。默认值为 `undefined`。如果 `active` 为 `undefined`，图标将处于默认状态。否则，根据 `active` 的值，它将处于激活或非激活状态。
 
-  > **Note**
-  > 要让 `active` prop 正常工作，您应该在根组件中渲染一个 `SharedResources` 组件。例如：
-  >
-  > ```vue
-  > <script>
-  > import { SharedResources } from 'dls-icons-vue'
-  >
-  > export default {
-  >   components: {
-  >     SharedResources
-  >   }
-  > }
-  > </script>
-  >
-  > <template>
-  >   <div id="app">
-  >     <shared-resources />
-  >     ...
-  >   </div>
-  > </template>
-  > ```
+> **Note**
+> 要让 `active` prop 正常工作，您应该在根组件中渲染一个 `SharedResources` 组件。例如：
+>
+> ```vue
+> <script>
+> import { SharedResources } from 'dls-icons-vue'
+>
+> export default {
+>   components: {
+>     SharedResources
+>   }
+> }
+> </script>
+>
+> <template>
+>   <div id="app">
+>     <shared-resources />
+>     ...
+>   </div>
+> </template>
+> ```
 
 ### 作为图标数据
 
