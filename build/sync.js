@@ -10,8 +10,8 @@ const PACKAGES = [
 async function syncPackage (name) {
   const options = {
     hostname: 'npmmirror.com',
-    path: `/sync/${name}`,
-    method: 'GET'
+    path: `/sync/${name}/?sync_upstream=true`,
+    method: 'PUT'
   }
 
   return new Promise((resolve, reject) => {
