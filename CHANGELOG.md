@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.11.2
+
+- Revert setting default icon color.
+
 ## 3.11.1
 
 - Fix icons that not look good when fill color has transparency.
