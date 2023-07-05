@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.12.0
+
+- Add `image-upload`, `syringe`, `syringe-solid`.
+
 ## 3.11.2
 
 - Revert setting default icon color.
