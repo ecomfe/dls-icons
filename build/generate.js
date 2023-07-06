@@ -91,7 +91,7 @@ async function generate () {
     clearDir(iconsDir)
   })
 
-  Promise.all(
+  return Promise.all(
     (await getSVGFiles()).map(async ({ slug, content }) => {
       const file = `${slug}.svg`
       const { el, content: svg, width, height } = await normalizeSVG(content, file)
@@ -360,4 +360,8 @@ function getContextAttr (el, attr) {
   return null
 }
 
-generate()
+async function main () {
+  await generate()
+}
+
+main()
