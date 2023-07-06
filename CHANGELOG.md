@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.13.0
+
+- Add `{before,after}-square{,-solid}`, `package-upload{,solid}`.
+
 ## 3.12.0
 
 - Add `image-upload`, `syringe`, `syringe-solid`.
