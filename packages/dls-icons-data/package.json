@@ -9,6 +9,7 @@
   },
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/plugin-proposal-export-default-from": "^7.17.12",

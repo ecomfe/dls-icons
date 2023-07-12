@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.14.0
+
+- Add typings for all packages.
+
 ## 3.13.0
 
 - Add `{before,after}-square{,-solid}`, `package-upload{,solid}`.
