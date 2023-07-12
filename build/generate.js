@@ -43,6 +43,7 @@ const ENDPOINT = process.env.DLS_ICONS_API
 const RAW_DIR = path.resolve(__dirname, '../raw')
 const SVG_DIR = path.resolve(__dirname, '../svg')
 const ICON_PATTERN = /^(.+)\.svg$/
+
 const DATA_TPL = fs.readFileSync(
   path.resolve(__dirname, 'data/data.tpl'),
   'utf8'
@@ -59,8 +60,41 @@ const ICON_EXPORT_TPL = fs.readFileSync(
   path.resolve(__dirname, 'icon/export.tpl'),
   'utf8'
 )
+
+const TYPINGS_DATA_INDEX_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'typings/data.index.tpl'),
+  'utf8'
+)
+const TYPINGS_DATA_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'typings/data.tpl'),
+  'utf8'
+)
+const TYPINGS_REACT_INDEX_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'typings/react.index.tpl'),
+  'utf8'
+)
+const TYPINGS_REACT_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'typings/react.tpl'),
+  'utf8'
+)
+const TYPINGS_VUE_INDEX_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'typings/vue.index.tpl'),
+  'utf8'
+)
+const TYPINGS_VUE_TPL = fs.readFileSync(
+  path.resolve(__dirname, 'typings/vue.tpl'),
+  'utf8'
+)
+
 const ICON_PACKS = ['dls-icons-react', 'dls-icons-vue', 'dls-icons-vue-3']
 const DATA_PACK = 'dls-icons-data'
+
+const TYPINGS_TPL_MAP = {
+  'dls-icons-data': [TYPINGS_DATA_INDEX_TPL, TYPINGS_DATA_TPL],
+  'dls-icons-react': [TYPINGS_REACT_INDEX_TPL, TYPINGS_REACT_TPL],
+  'dls-icons-vue': [TYPINGS_VUE_INDEX_TPL, TYPINGS_VUE_TPL],
+  'dls-icons-vue-3': [TYPINGS_VUE_INDEX_TPL, TYPINGS_VUE_TPL]
+}
 
 function getPackDir (name, ...rest) {
   return path.resolve(__dirname, `../packages/${name}`, ...rest)
@@ -158,6 +192,13 @@ async function generate () {
       if (pack !== DATA_PACK) {
         fs.writeFileSync(path.join(packDir, 'src/index.js'), iconIndex, 'utf8')
       }
+
+      const [indexTpl, exportTpl] = TYPINGS_TPL_MAP[pack]
+      const typeExports = icons
+        .map((data) => renderTpl(exportTpl, data))
+        .join('')
+      const typeIndex = renderTpl(indexTpl, { exports: typeExports })
+      fs.writeFileSync(path.join(packDir, 'src/index.d.ts'), typeIndex, 'utf8')
 
       const cols = 5
       const prefix = pack === DATA_PACK ? 'data' : 'Icon'
