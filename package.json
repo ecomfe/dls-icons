@@ -9,7 +9,7 @@
     "sync": "node -r esm build/sync.js",
     "build": "pnpm generate && pnpm -r build",
     "prepare": "pnpm generate",
-    "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public && pnpm sync"
+    "release": "pnpm generate && bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public && pnpm sync"
   },
   "keywords": [
     "svg",
