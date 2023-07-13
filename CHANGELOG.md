@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.14.3
+
+- Fix incorrect dist files in the last version.
+
 ## 3.14.2
 
 - Fix typings for Vue 2.
