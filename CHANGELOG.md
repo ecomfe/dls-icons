@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.14.1
+
+- Fix build process that `index.d.ts` is not included in the distribution.
+
 ## 3.14.0
 
 - Add typings for all packages.

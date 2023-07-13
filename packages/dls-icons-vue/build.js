@@ -1,4 +1,5 @@
 import path from 'path'
+import { copyFileSync } from 'fs'
 import { rollup } from 'rollup'
 import alias from '@rollup/plugin-alias'
 import babel from '@rollup/plugin-babel'
@@ -56,15 +57,15 @@ const main = async () => {
   bundle.write({
     format: 'cjs',
     file: 'dist/cjs/index.js',
-    sourcemap: true,
-    banner: '/* eslint-disable */'
+    sourcemap: true
   })
   bundle.write({
     format: 'es',
     file: 'dist/es/index.js',
-    sourcemap: true,
-    banner: '/* eslint-disable */'
+    sourcemap: true
   })
+
+  copyFileSync('src/index.d.ts', 'dist/index.d.ts')
 }
 
 main()

@@ -1,3 +1,4 @@
+import { copyFileSync } from 'fs'
 import { rollup } from 'rollup'
 import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
@@ -7,14 +8,14 @@ const babelConfig = {
     [
       '@babel/preset-env',
       {
-        modules: false,
-      },
-    ],
+        modules: false
+      }
+    ]
   ],
   plugins: ['@babel/plugin-proposal-export-default-from'],
   exclude: 'node_modules/**',
   extensions: ['.js'],
-  babelHelpers: 'bundled',
+  babelHelpers: 'bundled'
 }
 
 const main = async () => {
@@ -23,22 +24,22 @@ const main = async () => {
   const inputOptions = {
     context: __dirname,
     input: 'src/index.js',
-    plugins: plugins,
+    plugins
   }
 
   const bundle = await rollup(inputOptions)
   bundle.write({
     format: 'cjs',
     file: 'dist/cjs/index.js',
-    sourcemap: true,
-    banner: '/* eslint-disable */',
+    sourcemap: true
   })
   bundle.write({
     format: 'es',
     file: 'dist/es/index.js',
-    sourcemap: true,
-    banner: '/* eslint-disable */',
+    sourcemap: true
   })
+
+  copyFileSync('src/index.d.ts', 'dist/index.d.ts')
 }
 
 main()

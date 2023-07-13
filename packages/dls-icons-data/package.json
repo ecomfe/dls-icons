@@ -4,7 +4,7 @@
   "description": "Icon data for DLS icons.",
   "author": "Justineo (https://github.com/Justineo)",
   "scripts": {
-    "build": "node -r esm rollup.js",
+    "build": "node -r esm build.js",
     "prepublishOnly": "pnpm build"
   },
   "main": "dist/cjs/index.js",
