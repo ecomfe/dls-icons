@@ -1,4 +1,4 @@
-import type { DefineComponent } from 'vue'
+type DefineComponent<T> = new () => { $props: T }
 
 type IconProps = {
   title?: string

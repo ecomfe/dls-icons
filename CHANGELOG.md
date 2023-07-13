@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.14.2
+
+- Fix typings for Vue 2.
+
 ## 3.14.1
 
 - Fix build process that `index.d.ts` is not included in the distribution.
