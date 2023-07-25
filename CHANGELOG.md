@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.15.0
+
+- Add `{heteronym,add-pause,yao}-square`.
+
 ## 3.14.3
 
 - Fix incorrect dist files in the last version.
