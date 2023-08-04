@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.16.0
+
+- Add forwardRef and improve typings for React version.
+
 ## 3.15.0
 
 - Add `{heteronym,add-pause,yao}-square`.
