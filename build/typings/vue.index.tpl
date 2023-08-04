@@ -6,5 +6,5 @@ type IconProps = {
   active?: boolean
 }
 
-export const SharedResources: DefineComponent<{}>
+export declare const SharedResources: DefineComponent<{}>
 {exports}

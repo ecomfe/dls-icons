@@ -1,1 +1,1 @@
-export const Icon{Name}: DefineComponent<IconProps>
+export declare const Icon{Name}: DefineComponent<IconProps>

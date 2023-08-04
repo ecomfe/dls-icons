@@ -2,6 +2,7 @@
  * @file SVG icon factory
  * @author zhanglili, guyiling
  */
+import { forwardRef } from 'react'
 import { escapeHTML } from '@/util'
 import { markup, attributes } from '@/shared'
 import '@/icon.less'
@@ -9,7 +10,7 @@ import '@/icon.less'
 const baseClassName = 'dls-icon'
 
 export function createIcon ({ name, content, width, height, attributes }) {
-  const Icon = ({ className, title, spin, active, ...props }) => {
+  const Icon = forwardRef(({ className, title, spin, active, ...props }, ref) => {
     const iconClasses = [baseClassName, className]
 
     if (spin) {
@@ -34,16 +35,17 @@ export function createIcon ({ name, content, width, height, attributes }) {
         className={iconClassName}
         focusable={tabIndex !== '0' ? false : null}
         dangerouslySetInnerHTML={html}
+        ref={ref}
         {...props}
       />
     )
-  }
+  })
   Icon.displayName = name
 
   return Icon
 }
 
-export function SharedResources ({ className, ...props }) {
+export function SharedResources () {
   const html = {
     __html: markup
   }
@@ -51,8 +53,7 @@ export function SharedResources ({ className, ...props }) {
   return (
     <svg
       {...attributes}
-      {...props}
-      className={`${baseClassName}-shared ${className}`}
+      className={`${baseClassName}-shared`}
       dangerouslySetInnerHTML={html}
       focusable="false"
     />

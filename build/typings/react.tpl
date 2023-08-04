@@ -1,1 +1,1 @@
-export function Icon{Name}(props: IconProps): JSX.Element
+export declare const Icon{Name}: Icon

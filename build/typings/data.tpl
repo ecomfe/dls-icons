@@ -1,1 +1,1 @@
-export const data{Name}: IconData
+export declare const data{Name}: IconData
