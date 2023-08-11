@@ -2,7 +2,7 @@
  * @file SVG icon factory
  * @author guyiling
  */
-import { mergeProps, h } from 'vue'
+import { computed, mergeProps, h } from 'vue'
 import { escapeHTML } from '@/util'
 import { markup, attributes } from '@/shared'
 import '@/icon.less'
@@ -20,16 +20,22 @@ export function createIcon ({ name, content, width, height, attributes }) {
         default: undefined
       }
     },
-    setup ({ spin, active }, { attrs }) {
-      const iconClasses = [baseClassName]
+    setup (props, ctx) {
+      const iconClasses = computed(() => {
+        const classes = [baseClassName]
 
-      if (spin) {
-        iconClasses.push(`${baseClassName}-spin`)
-      }
+        if (props.spin) {
+          classes.push(`${baseClassName}-spin`)
+        }
 
-      if (typeof active !== 'undefined') {
-        iconClasses.push(`${baseClassName}-${active ? 'active' : 'inactive'}`)
-      }
+        if (typeof props.active !== 'undefined') {
+          classes.push(
+            `${baseClassName}-${props.active ? 'active' : 'inactive'}`
+          )
+        }
+
+        return classes
+      })
 
       return () =>
         h(
@@ -37,16 +43,16 @@ export function createIcon ({ name, content, width, height, attributes }) {
           mergeProps(
             {
               ...attributes,
-              class: iconClasses,
+              class: iconClasses.value,
               width,
               height,
-              focusable: attrs.tabindex !== '0' ? 'false' : null,
+              focusable: ctx.attrs.tabindex !== '0' ? 'false' : null,
               innerHTML:
-                (attrs.title
-                  ? `<title>${escapeHTML(attrs.title)}</title>`
+                (ctx.attrs.title
+                  ? `<title>${escapeHTML(ctx.attrs.title)}</title>`
                   : '') + content
             },
-            attrs
+            ctx.attrs
           )
         )
     }
@@ -56,13 +62,13 @@ export function createIcon ({ name, content, width, height, attributes }) {
 export const SharedResources = {
   name: 'SharedResources',
   inheritAttrs: false,
-  setup (_, { attrs }) {
+  setup (_, ctx) {
     const iconClass = `${baseClassName} ${baseClassName}-shared`
 
     return () =>
       h(
         'svg',
-        mergeProps(attributes, attrs, {
+        mergeProps(attributes, ctx.attrs, {
           class: iconClass,
           focusable: false,
           innerHTML: markup

@@ -1,1 +1,1 @@
-export declare const Icon{Name}: Icon
+{annotation}export declare const Icon{Name}: Icon

@@ -39,52 +39,29 @@ function getSVGOConfig ({ id }) {
   }
 }
 
+function readFile (...parts) {
+  return fs.readFileSync(path.resolve(__dirname, ...parts), 'utf8')
+}
+
+function writeFile (content, ...parts) {
+  fs.writeFileSync(path.resolve(__dirname, ...parts), content, 'utf8')
+}
+
 const ENDPOINT = process.env.DLS_ICONS_API
 const RAW_DIR = path.resolve(__dirname, '../raw')
 const SVG_DIR = path.resolve(__dirname, '../svg')
-const ICON_PATTERN = /^(.+)\.svg$/
 
-const DATA_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'data/data.tpl'),
-  'utf8'
-)
-const DATA_EXPORT_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'data/export.tpl'),
-  'utf8'
-)
-const ICON_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'icon/icon.tpl'),
-  'utf8'
-)
-const ICON_EXPORT_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'icon/export.tpl'),
-  'utf8'
-)
+const DATA_TPL = readFile('data/data.tpl')
+const DATA_EXPORT_TPL = readFile('data/export.tpl')
+const ICON_TPL = readFile('icon/icon.tpl')
+const ICON_EXPORT_TPL = readFile('icon/export.tpl')
 
-const TYPINGS_DATA_INDEX_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'typings/data.index.tpl'),
-  'utf8'
-)
-const TYPINGS_DATA_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'typings/data.tpl'),
-  'utf8'
-)
-const TYPINGS_REACT_INDEX_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'typings/react.index.tpl'),
-  'utf8'
-)
-const TYPINGS_REACT_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'typings/react.tpl'),
-  'utf8'
-)
-const TYPINGS_VUE_INDEX_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'typings/vue.index.tpl'),
-  'utf8'
-)
-const TYPINGS_VUE_TPL = fs.readFileSync(
-  path.resolve(__dirname, 'typings/vue.tpl'),
-  'utf8'
-)
+const TYPINGS_DATA_INDEX_TPL = readFile('typings/data.index.tpl')
+const TYPINGS_DATA_TPL = readFile('typings/data.tpl')
+const TYPINGS_REACT_INDEX_TPL = readFile('typings/react.index.tpl')
+const TYPINGS_REACT_TPL = readFile('typings/react.tpl')
+const TYPINGS_VUE_INDEX_TPL = readFile('typings/vue.index.tpl')
+const TYPINGS_VUE_TPL = readFile('typings/vue.tpl')
 
 const ICON_PACKS = ['dls-icons-react', 'dls-icons-vue', 'dls-icons-vue-3']
 const DATA_PACK = 'dls-icons-data'
@@ -126,56 +103,78 @@ async function generate () {
   })
 
   return Promise.all(
-    (await getSVGFiles()).map(async ({ slug, content }) => {
-      const file = `${slug}.svg`
-      const { el, content: svg, width, height } = await normalizeSVG(content, file)
+    (await getSVGFiles()).map(
+      async ({ slug, content, category, desc, type, colorType }) => {
+        const file = `${slug}.svg`
+        const {
+          el,
+          content: svg,
+          width,
+          height
+        } = await normalizeSVG(content, file)
 
-      fs.writeFileSync(path.join(SVG_DIR, file), svg, 'utf8')
+        fs.writeFileSync(path.join(SVG_DIR, file), svg, 'utf8')
 
-      const name = camelCase(slug)
-      const Name = upperFirst(name)
+        const name = camelCase(slug)
+        const Name = upperFirst(name)
 
-      const { width: w, height: h, ...attributes } = el.attributes
+        const { width: w, height: h, ...attributes } = el.attributes
 
-      const iconCode = stringifyObject(
-        {
-          name: `Icon${Name}`,
-          content: el.children.map((child) => stringify(child)).join(''),
-          attributes,
-          width: Number(width),
-          height: Number(height)
-        },
-        {
-          indent: '  '
+        const iconCode = stringifyObject(
+          {
+            name: `Icon${Name}`,
+            content: el.children.map((child) => stringify(child)).join(''),
+            attributes,
+            width: Number(width),
+            height: Number(height)
+          },
+          {
+            indent: '  '
+          }
+        )
+
+        const deprecated = category === '@deprecated'
+        const annotation = deprecated ? '/** @deprecated */\n' : ''
+
+        const tplData = {
+          name,
+          Name,
+          icon: iconCode,
+          annotation
         }
-      )
 
-      const tplData = {
-        name,
-        Name,
-        icon: iconCode
-      }
+        const dataModuleCode = renderTpl(DATA_TPL, tplData)
+        const iconModuleCode = renderTpl(ICON_TPL, tplData)
 
-      const dataModuleCode = renderTpl(DATA_TPL, tplData)
-      const iconModuleCode = renderTpl(ICON_TPL, tplData)
-
-      fs.writeFileSync(
-        path.join(DATA_DIR, `icons/${Name}.js`),
-        dataModuleCode,
-        'utf8'
-      )
-
-      ICON_PACKS.forEach((pack) => {
-        const iconsDir = path.join(getPackDir(pack), 'src/icons')
         fs.writeFileSync(
-          path.join(iconsDir, `${Name}.js`),
-          iconModuleCode,
+          path.join(DATA_DIR, `icons/${Name}.js`),
+          dataModuleCode,
           'utf8'
         )
-      })
 
-      return { slug, name, Name, file }
-    })
+        ICON_PACKS.forEach((pack) => {
+          const iconsDir = path.join(getPackDir(pack), 'src/icons')
+          fs.writeFileSync(
+            path.join(iconsDir, `${Name}.js`),
+            iconModuleCode,
+            'utf8'
+          )
+        })
+
+        return {
+          slug,
+          name,
+          Name,
+          file,
+          category,
+          deprecated,
+          desc,
+          type,
+          colorType,
+          annotation
+        }
+      }
+    )
   ).then((icons) => {
     const dataIndex = icons
       .map((data) => renderTpl(DATA_EXPORT_TPL, data))
@@ -183,9 +182,38 @@ async function generate () {
 
     fs.writeFileSync(path.join(DATA_DIR, 'index.js'), dataIndex, 'utf8')
 
+    const TYPE_MAP = {
+      0: 'outline',
+      1: 'solid'
+    }
+    const COLOR_TYPE_MAP = {
+      0: 'monocolor',
+      1: 'multicolor'
+    }
+    fs.writeFileSync(
+      getPackDir(DATA_PACK, 'meta.json'),
+      JSON.stringify(
+        icons.reduce((acc, { Name, slug, category, desc, deprecated, type, colorType }) => {
+          acc[`Icon${Name}`] = {
+            slug,
+            category,
+            desc,
+            deprecated,
+            type: TYPE_MAP[type],
+            colorType: COLOR_TYPE_MAP[colorType]
+          }
+
+          return acc
+        }, {}),
+        null,
+        '  '
+      ),
+      'utf8'
+    )
+
     const iconIndex =
       icons.map((data) => renderTpl(ICON_EXPORT_TPL, data)).join('') +
-      'export { createIcon, SharedResources } from \'./common\'\n'
+      "export { createIcon, SharedResources } from './common'\n"
 
     ICON_PACKS.concat(DATA_PACK).forEach((pack) => {
       const packDir = getPackDir(pack)
@@ -210,9 +238,17 @@ async function generate () {
               .map((_, j) => icons[i * cols + j])
               .map(
                 (icon) =>
-                  `<td align="center">${
+                  `<td align="center"${
+                    icon && icon.deprecated ? ' title="@deprecated"' : ''
+                  }>${
                     icon
-                      ? `<img src="https://raw.githubusercontent.com/ecomfe/dls-icons/master/svg/${icon.file}" height="24"/><br/><sub>${prefix}${icon.Name}</sub>`
+                      ? `<img src="https://raw.githubusercontent.com/ecomfe/dls-icons/master/svg/${
+                          icon.file
+                        }" height="24"/><br/><sub>${
+                          icon.deprecated ? '<s>' : ''
+                        }${prefix}${icon.Name}${
+                          icon.deprecated ? '</s>' : ''
+                        }</sub>`
                       : ''
                   }</td>`
               )
@@ -224,16 +260,15 @@ async function generate () {
 
       const readmeFiles = ['README.md', 'README.zh-Hans.md']
 
-      readmeFiles.forEach(readme => {
-        const file = path.join(packDir, readme)
-        const content = fs.readFileSync(file, 'utf8')
+      readmeFiles.forEach((readme) => {
+        const content = readFile(packDir, readme)
 
-        fs.writeFileSync(
-          file,
+        writeFile(
           commentMark(content, {
             icons: iconTable
           }),
-          'utf8'
+          packDir,
+          readme
         )
       })
     })
@@ -247,39 +282,41 @@ function sortFileData (f1, f2) {
 }
 
 async function getSVGFiles () {
+  let iconData
   if (ENDPOINT) {
-    const { data } = JSON.parse(await fetch(ENDPOINT).then((res) => res.text()))
-
-    clearDir(RAW_DIR)
-
-    data.forEach(({ label, svg }) => {
-      fs.writeFileSync(
-        path.join(RAW_DIR, label.replace(/_/g, '-') + '.svg'),
-        svg,
-        'utf8'
-      )
-    })
-
-    return data
-      .map(({ label, svg }) => ({
-        slug: label.replace(/_/g, '-'),
-        content: svg
-      }))
-      .sort(sortFileData)
+    iconData = await fetch(ENDPOINT).then((res) => res.text())
+    writeFile(iconData, 'icons.json')
   } else {
-    return fs
-      .readdirSync(RAW_DIR)
-      .filter((file) => ICON_PATTERN.test(file))
-      .map((file) => {
-        const slug = file.replace(ICON_PATTERN, (_, $1) => $1)
-        const content = fs.readFileSync(path.resolve(RAW_DIR, file), 'utf8')
-        return {
-          slug,
-          content
-        }
-      })
-      .sort(sortFileData)
+    try {
+      iconData = readFile('icons.json')
+    } catch (e) {
+      console.error('No local `icons.json` found. You must specify an `ENDPOINT`.')
+      process.exit(1)
+    }
   }
+
+  const { data } = JSON.parse(iconData)
+
+  clearDir(RAW_DIR)
+
+  data.forEach(({ label, svg }) => {
+    fs.writeFileSync(
+      path.join(RAW_DIR, label.replace(/_/g, '-') + '.svg'),
+      svg,
+      'utf8'
+    )
+  })
+
+  return data
+    .map(({ label, svg, name, category, type, colorType }) => ({
+      slug: label.replace(/_/g, '-'),
+      content: svg,
+      category,
+      desc: name, // Text description
+      type, // 0: outline, 1: solid
+      colorType // 0: monocolor, 1: multicolor
+    }))
+    .sort(sortFileData)
 }
 
 async function normalizeSVG (content, file) {
@@ -299,7 +336,7 @@ async function normalizeSVG (content, file) {
   let { width, height, viewBox } = attributes
 
   if (!viewBox && !(width && height)) {
-    console.error(file, 'doesn\'t contain a valid size declaration.')
+    console.error(file, "doesn't contain a valid size declaration.")
     console.error(width, height, viewBox)
   } else if (viewBox) {
     // has viewBox, override width/height

@@ -1,2 +1,2 @@
 const data{Name} = {icon}
-export default data{Name}
+{annotation}export default data{Name}

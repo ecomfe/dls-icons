@@ -40,6 +40,7 @@ export function createIcon ({ name, content, width, height, attributes }) {
       />
     )
   })
+
   Icon.displayName = name
 
   return Icon

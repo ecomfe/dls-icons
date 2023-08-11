@@ -1,1 +1,1 @@
-export declare const data{Name}: IconData
+{annotation}export declare const data{Name}: IconData
