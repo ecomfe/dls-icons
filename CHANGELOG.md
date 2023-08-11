@@ -2,6 +2,12 @@
 
 > ⚠️ - Breaking changes
 
+## 3.17.0
+
+- Fix reactivity for Vue 3 version.
+- Deprecate `arrow-to-top-soild` and `star-dash-soild` (typo), use `arrow-to-top-solid` and `star-dash-solid` instead.
+- Add `dls-icons-data/meta.json` for tooling integration.
+
 ## 3.16.0
 
 - Add forwardRef and improve typings for React version.
