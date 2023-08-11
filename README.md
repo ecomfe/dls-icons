@@ -1,5 +1,7 @@
 # dls-icons
 
+Icon picker: https://dls-icons.vercel.app/
+
 <table>
   <tr>
     <td><a href="https://github.com/ecomfe/dls-icons/tree/master/packages/dls-icons-data" target="_blank">dls-icons-data</a></td>
