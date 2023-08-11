@@ -54,16 +54,18 @@ const main = async () => {
   }
 
   const bundle = await rollup(inputOptions)
-  bundle.write({
-    format: 'cjs',
-    file: 'dist/cjs/index.js',
-    sourcemap: true
-  })
-  bundle.write({
-    format: 'es',
-    file: 'dist/es/index.js',
-    sourcemap: true
-  })
+  await Promise.all([
+    bundle.write({
+      format: 'cjs',
+      file: 'dist/cjs/index.js',
+      sourcemap: true
+    }),
+    bundle.write({
+      format: 'es',
+      file: 'dist/es/index.js',
+      sourcemap: true
+    })
+  ])
 
   copyFileSync('src/index.d.ts', 'dist/index.d.ts')
 }
