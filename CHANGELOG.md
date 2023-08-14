@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.18.0
+
+- Add 10 new icons.
+
 ## 3.17.0
 
 - Fix reactivity for Vue 3 version.
