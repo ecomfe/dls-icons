@@ -4,7 +4,16 @@ import * as icons from 'dls-icons-vue-3'
 import meta from 'dls-icons-data/meta.json'
 import RadioGroup from './RadioGroup.vue'
 
-const metadata = meta as Record<string, Record<string, unknown>>
+type IconMeta = {
+  slug: string
+  category: string
+  desc: string
+  deprecated: boolean
+  type: 'solid' | 'outline'
+  colorType: 'monocolor' | 'multicolor'
+}
+
+const metadata = meta as Record<string, IconMeta>
 const { SharedResources } = icons
 
 const iconList = Object.entries(icons)
@@ -25,12 +34,37 @@ const activeOptions = [
 ]
 const active = ref<(typeof activeOptions)[number]['value']>()
 
+const outputOptions = [
+  { label: 'Name', value: 'name' },
+  { label: 'React', value: 'react' },
+  { label: 'Vue', value: 'vue' }
+]
+const output = ref<(typeof outputOptions)[number]['value']>('name')
+
+function getOutput(componentName: string) {
+  const kebabCaseName = `icon-${metadata[componentName].slug}`
+
+  switch (output.value) {
+    case 'react':
+      return `<${componentName} ${
+        active.value === undefined ? '' : active.value ? 'active ' : 'active={false} '
+      }/>`
+    case 'vue':
+      return `<${kebabCaseName} ${
+        active.value === undefined ? '' : active.value ? 'active' : ':active="false"'
+      }/>`
+    default:
+      return componentName
+  }
+}
+
 const filteredIconList = computed(() =>
   iconList.filter(([componentName]) => {
     if (query.value) {
       const q = query.value.toLowerCase()
       const name = componentName.slice(4).toLowerCase()
-      const { desc = '', slug = '' } = metadata[componentName] as { desc?: string; slug?: string }
+      const { desc, slug } = metadata[componentName]
+
       if (
         !name.includes(q) &&
         !slug?.toLowerCase().includes(q) &&
@@ -44,7 +78,7 @@ const filteredIconList = computed(() =>
       return true
     }
 
-    return type.value === metadata[name].type
+    return type.value === metadata[componentName].type
   })
 )
 
@@ -58,7 +92,7 @@ let messageTimer: number
 function copy(name: string) {
   clearTimeout(messageTimer)
 
-  navigator.clipboard.writeText(name)
+  navigator.clipboard.writeText(getOutput(name))
   messageOpen.value = true
 
   messageTimer = setTimeout(() => {
@@ -108,6 +142,7 @@ onMounted(() => {
       <div class="options">
         <RadioGroup v-model="type" :options="typeOptions" />
         <RadioGroup v-model="active" :options="activeOptions" />
+        <RadioGroup v-model="output" :options="outputOptions" />
       </div>
     </section>
 
