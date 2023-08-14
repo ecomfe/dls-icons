@@ -9,6 +9,7 @@ import stringifyObject from 'stringify-object'
 import { camelCase, upperFirst } from 'lodash'
 import commentMark from 'comment-mark'
 import { optimize } from 'svgo'
+import { pinyin } from 'pinyin-pro'
 
 function getSVGOConfig ({ id }) {
   return {
@@ -193,18 +194,27 @@ async function generate () {
     fs.writeFileSync(
       getPackDir(DATA_PACK, 'meta.json'),
       JSON.stringify(
-        icons.reduce((acc, { Name, slug, category, desc, deprecated, type, colorType }) => {
-          acc[`Icon${Name}`] = {
-            slug,
-            category,
-            desc,
-            deprecated,
-            type: TYPE_MAP[type],
-            colorType: COLOR_TYPE_MAP[colorType]
-          }
+        icons.reduce(
+          (
+            acc,
+            { Name, slug, category, desc, deprecated, type, colorType }
+          ) => {
+            acc[`Icon${Name}`] = {
+              slug,
+              category,
+              desc,
+              descPinyin: pinyin(desc, { toneType: 'none' })
+                .toLowerCase()
+                .replace(/\s+/g, ''),
+              deprecated,
+              type: TYPE_MAP[type],
+              colorType: COLOR_TYPE_MAP[colorType]
+            }
 
-          return acc
-        }, {}),
+            return acc
+          },
+          {}
+        ),
         null,
         '  '
       ),
@@ -290,7 +300,9 @@ async function getSVGFiles () {
     try {
       iconData = readFile('icons.json')
     } catch (e) {
-      console.error('No local `icons.json` found. You must specify an `ENDPOINT`.')
+      console.error(
+        'No local `icons.json` found. You must specify an `ENDPOINT`.'
+      )
       process.exit(1)
     }
   }

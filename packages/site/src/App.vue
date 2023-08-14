@@ -8,6 +8,7 @@ type IconMeta = {
   slug: string
   category: string
   desc: string
+  descPinyin: string
   deprecated: boolean
   type: 'solid' | 'outline'
   colorType: 'monocolor' | 'multicolor'
@@ -58,17 +59,22 @@ function getOutput(componentName: string) {
   }
 }
 
+function updateQuery(e: Event) {
+  query.value = (e.target as HTMLInputElement).value
+}
+
 const filteredIconList = computed(() =>
   iconList.filter(([componentName]) => {
     if (query.value) {
-      const q = query.value.toLowerCase()
+      const q = query.value.replace(/['\s]/g, '').toLowerCase()
       const name = componentName.slice(4).toLowerCase()
-      const { desc, slug } = metadata[componentName]
+      const { desc, descPinyin, slug } = metadata[componentName]
 
       if (
         !name.includes(q) &&
-        !slug?.toLowerCase().includes(q) &&
-        !desc?.toLowerCase().includes(q)
+        !slug.toLowerCase().includes(q) &&
+        !desc.toLowerCase().includes(q) &&
+        !descPinyin.toLowerCase().includes(q)
       ) {
         return false
       }
@@ -134,7 +140,8 @@ onMounted(() => {
     <section class="filter">
       <input
         class="query"
-        v-model="query"
+        :value="query"
+        @input="updateQuery"
         autofocus
         placeholder="Type to search..."
         ref="queryEl"

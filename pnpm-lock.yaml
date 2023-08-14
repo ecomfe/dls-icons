@@ -47,6 +47,9 @@ importers:
       node-fetch:
         specifier: ^2.6.12
         version: 2.6.12
+      pinyin-pro:
+        specifier: ^3.16.2
+        version: 3.16.2
       prettier:
         specifier: ^3.0.0
         version: 3.0.0
@@ -4672,6 +4675,10 @@ packages:
   /pify@5.0.0:
     resolution: {integrity: sha512-eW/gHNMlxdSP6dmG6uJip6FXN0EQBwm2clYYd8Wul42Cwu/DK8HEftzsapcNdYe2MfLiIwZqsDk2RDEsTE79hA==}
     engines: {node: '>=10'}
+    dev: true
+
+  /pinyin-pro@3.16.2:
+    resolution: {integrity: sha512-0Q+boRY7u0X7NApcS8ZDLWUw0H8PoopaH4yN/KVqeAFsrRTwhKEbv0bG/ZYwLrQRSfGhWEm5wxl/l4qyVQTrnQ==}
     dev: true
 
   /pkg-dir@4.2.0:
