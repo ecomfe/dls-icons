@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.19.0
+
+- Add 3 new icons.
+
 ## 3.18.1
 
 - Add `descPinyin` to `dls-icons-data/meta.json`.
