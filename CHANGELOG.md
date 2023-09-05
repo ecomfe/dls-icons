@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.20.0
+
+- Add `movie-solid` and `text-square-alt-solid`.
+
 ## 3.19.0
 
 - Add 3 new icons.
