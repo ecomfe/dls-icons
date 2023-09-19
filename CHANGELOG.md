@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.21.0
+
+- Add `text-flower-square-solid`.
+
 ## 3.20.0
 
 - Add `movie-solid` and `text-square-alt-solid`.
