@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.22.0
+
+- Add `text-flower-square`.
+
 ## 3.21.0
 
 - Add `text-flower-square-solid`.
