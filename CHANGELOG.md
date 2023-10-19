@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.23.0
+
+- Add `sync-circle`, `decrease-width` and `smiley-comment`.
+
 ## 3.22.0
 
 - Add `text-flower-square`.
