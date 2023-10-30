@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.24.0
+
+- Add `printer-solid`.
+
 ## 3.23.0
 
 - Add `sync-circle`, `decrease-width` and `smiley-comment`.
