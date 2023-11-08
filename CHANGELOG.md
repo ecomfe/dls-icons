@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.25.0
+
+- Add `intelligent-prompt`.
+
 ## 3.24.0
 
 - Add `printer-solid`.
