@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.26.0
+
+- Add `travel-earth-plane-solid`.
+
 ## 3.25.0
 
 - Add `intelligent-prompt`.
