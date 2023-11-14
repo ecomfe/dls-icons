@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.27.0
+
+- Add `arrow-down-left`.
+
 ## 3.26.0
 
 - Add `travel-earth-plane-solid`.
