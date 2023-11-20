@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.28.0
+
+- Add `switch`.
+
 ## 3.27.0
 
 - Add `arrow-down-left`.
