@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.29.0
+
+- Add 9 new icons.
+
 ## 3.28.0
 
 - Add `switch`.
