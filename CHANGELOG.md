@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.30.0
+
+- Add `pen-write{,-solid}`.
+
 ## 3.29.0
 
 - Add 9 new icons.
