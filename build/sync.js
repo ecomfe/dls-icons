@@ -1,4 +1,4 @@
-import https from 'https'
+import { sync } from '@justineo/npmmirror-sync'
 
 const PACKAGES = [
   'dls-icons-data',
@@ -7,28 +7,7 @@ const PACKAGES = [
   'dls-icons-vue-3'
 ]
 
-async function syncPackage (name) {
-  const options = {
-    hostname: 'registry-direct.npmmirror.com',
-    path: `/-/package/${name}/syncs`,
-    method: 'PUT'
-  }
-
-  return new Promise((resolve, reject) => {
-    const req = https.request(options, (res) => {
-      res.on('data', () => {})
-      res.on('end', () => {
-        resolve()
-      })
-    })
-    req.on('error', (e) => {
-      reject(e)
-    })
-    req.end()
-  })
-}
-
-Promise.all(PACKAGES.map(syncPackage)).then(() => {
+Promise.all(PACKAGES.map(sync)).then(() => {
   console.log('Sync request sent for all packages.')
 }).catch((e) => {
   console.error(e)

@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@justineo/npmmirror-sync':
+        specifier: ^0.1.0
+        version: 0.1.0
       bumpp:
         specifier: ^7.2.0
         version: 7.2.0
@@ -1839,6 +1842,13 @@ packages:
       type-detect: 4.0.8
     dev: true
 
+  /@justineo/npmmirror-sync@0.1.0:
+    resolution: {integrity: sha512-vMv3oLD/oQ6LavtVsTIRYFwX6k3U9o5+pRs/kEIy0mWOqbU6zfUytpTCTCxMlhIWQ3oKCxoXY+29OMk2RWPZAQ==}
+    hasBin: true
+    dependencies:
+      '@types/node': 20.11.3
+    dev: true
+
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -1957,6 +1967,12 @@ packages:
 
   /@types/node@18.17.4:
     resolution: {integrity: sha512-ATL4WLgr7/W40+Sp1WnNTSKbgVn6Pvhc/2RHAdt8fl6NsQyp4oPCi2eKcGOvA494bwf1K/W6nGgZ9TwDqvpjdw==}
+    dev: true
+
+  /@types/node@20.11.3:
+    resolution: {integrity: sha512-nrlmbvGPNGaj84IJZXMPhQuCMEVTT/hXZMJJG/aIqVL9fKxqk814sGGtJA4GI6hpJSLQjpi6cn0Qx9eOf9SDVg==}
+    dependencies:
+      undici-types: 5.26.5
     dev: true
 
   /@types/resolve@1.17.1:
@@ -5717,6 +5733,10 @@ packages:
       has-bigints: 1.0.2
       has-symbols: 1.0.3
       which-boxed-primitive: 1.0.2
+    dev: true
+
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
     dev: true
 
   /unicode-canonical-property-names-ecmascript@2.0.0:

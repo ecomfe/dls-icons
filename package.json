@@ -20,6 +20,7 @@
   "author": "Justineo <justice360@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@justineo/npmmirror-sync": "^0.1.0",
     "bumpp": "^7.2.0",
     "comment-mark": "^1.1.1",
     "eslint": "^8.44.0",
