@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.32.0
+
+- Add `user-star` and `tools-solid`.
+
 ## 3.31.0
 
 - Added 4 new icons.
