@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.33.0
+
+- Add `heart-handshake-solid`.
+
 ## 3.32.0
 
 - Add `user-star` and `tools-solid`.
