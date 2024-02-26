@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.34.0
+
+- Add `coin-diamond{,-solid}`.
+
 ## 3.33.0
 
 - Add `heart-handshake-solid`.
