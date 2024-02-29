@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.35.0
+
+- Add `book-open`.
+
 ## 3.34.0
 
 - Add `coin-diamond{,-solid}`.
