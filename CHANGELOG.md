@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.35.1
+
+- `user-star` and `tools-solid` should not be deprecated.
+
 ## 3.35.0
 
 - Add `book-open`.
