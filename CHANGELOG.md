@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.36.0
+
+- Add `eye-solid`.
+
 ## 3.35.1
 
 - `user-star` and `tools-solid` should not be deprecated.
