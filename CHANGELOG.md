@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.36.1
+
+- Update `expand`.
+
 ## 3.36.0
 
 - Add `eye-solid`.
