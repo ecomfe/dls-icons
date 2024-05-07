@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.37.0
+
+- Add `paper-plane-send{,-solid}`.
+
 ## 3.36.1
 
 - Update `expand`.
