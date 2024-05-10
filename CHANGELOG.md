@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.38.0
+
+- Add `medical-kit-solid`.
+
 ## 3.37.0
 
 - Add `paper-plane-send{,-solid}`.
