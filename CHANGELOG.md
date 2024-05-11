@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.39.0
+
+- Add `chevron-left-circle-{,-solid}`.
+
 ## 3.38.0
 
 - Add `medical-kit-solid`.
