@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.40.0
+
+- Add `brush`.
+
 ## 3.39.0
 
 - Add `chevron-left-circle-{,-solid}`.
