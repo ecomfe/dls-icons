@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.41.0
+
+- Add `card-solid`.
+
 ## 3.40.0
 
 - Add `brush`.
