@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.42.0
+
+- Add `medical-kit`, `woman`, `ai-bubble{,-solid}`.
+
 ## 3.41.0
 
 - Add `card-solid`.
