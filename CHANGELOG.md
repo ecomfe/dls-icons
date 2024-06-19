@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.43.0
+
+- Add `sparkles-solid`.
+
 ## 3.42.0
 
 - Add `medical-kit`, `woman`, `ai-bubble{,-solid}`.
