@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.44.0
+
+- Add `video-upload`.
+
 ## 3.43.0
 
 - Add `sparkles-solid`.
