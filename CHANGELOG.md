@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.45.0
+
+- Add `lightning`, `lightning-solid`.
+
 ## 3.44.0
 
 - Add `video-upload`.
