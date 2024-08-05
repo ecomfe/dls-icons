@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.47.0
+
+- Add `menu`
+
 ## 3.46.0
 
 - Add `arrow-down-right`, `Q-A-comment-solid`
