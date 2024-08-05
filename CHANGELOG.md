@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.46.0
+
+- Add `arrow-down-right`, `Q-A-comment-solid`
+
 ## 3.45.0
 
 - Add `lightning`, `lightning-solid`.
