@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.48.0
+
+- Add `bulb-trend-solid`, `shield-wave`
+
 ## 3.47.0
 
 - Add `menu`
