@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.49.0
+
+- Add `id-square`
+
 ## 3.48.0
 
 - Add `bulb-trend-solid`, `shield-wave`
