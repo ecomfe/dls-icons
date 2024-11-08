@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.50.0
+
+- Add `image-star`
+
 ## 3.49.0
 
 - Add `id-square`
