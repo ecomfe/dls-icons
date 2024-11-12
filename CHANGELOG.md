@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.51.0
+
+- Add `hexagon-solid`
+
 ## 3.50.0
 
 - Add `image-star`
