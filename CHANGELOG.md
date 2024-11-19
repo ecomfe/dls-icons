@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.52.0
+
+- Add `adjust`
+
 ## 3.51.0
 
 - Add `hexagon-solid`
