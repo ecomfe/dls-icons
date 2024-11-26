@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.53.0
+
+- Add `pin-slant`, `pin-solid`
+
 ## 3.52.0
 
 - Add `adjust`
