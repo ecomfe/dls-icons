@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.54.0
+
+- Add `book-bookmark-check-solid`
+
 ## 3.53.0
 
 - Add `pin-slant`, `pin-solid`
