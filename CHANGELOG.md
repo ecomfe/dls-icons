@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.55.0
+
+- Add `user-authorization`
+
 ## 3.54.0
 
 - Add `book-bookmark-check-solid`
