@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.56.0
+
+- Add `ai-text`
+
 ## 3.55.0
 
 - Add `user-authorization`
