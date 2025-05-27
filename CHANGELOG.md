@@ -2,6 +2,12 @@
 
 > ⚠️ - Breaking changes
 
+## 3.57.0
+
+- Add 8 new icons
+
+- Update 2 icons
+
 ## 3.56.0
 
 - Add `ai-text`
