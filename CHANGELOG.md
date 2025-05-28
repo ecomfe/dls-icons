@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.57.1
+
+- Add `file-star`, `folder-star`
+
 ## 3.57.0
 
 - Add 8 new icons
