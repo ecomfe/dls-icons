@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.58.0
+
+- Add `windmill-spinning`, `home-alt`, `video-alt`
+
 ## 3.57.1
 
 - Add `file-star`, `folder-star`
