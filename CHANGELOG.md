@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.59.0
+
+- Add `compass`
+
 ## 3.58.0
 
 - Add `windmill-spinning`, `home-alt`, `video-alt`
