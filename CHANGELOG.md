@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.60.0
+
+- Add `file-alt`
+
 ## 3.59.0
 
 - Add `compass`
