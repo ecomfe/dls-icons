@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.61.0
+
+- Add `trend-report`
+
 ## 3.60.0
 
 - Add `file-alt`
