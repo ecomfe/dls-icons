@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.62.0
+
+- Add `slideshow-trend`
+
 ## 3.61.0
 
 - Add `trend-report`
