@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.63.0
+
+- Add `user-star-solid`
+
 ## 3.62.0
 
 - Add `slideshow-trend`
