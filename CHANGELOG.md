@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.64.1
+
+- Update `page`
+
 ## 3.64.0
 
 - Add `page`
