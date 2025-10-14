@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.64.0
+
+- Add `page`
+
 ## 3.63.0
 
 - Add `user-star-solid`
