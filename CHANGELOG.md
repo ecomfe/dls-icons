@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.65.0
+
+- Add `check-circle-solid`
+
 ## 3.64.1
 
 - Update `page`
