@@ -2,6 +2,10 @@
 
 > ⚠️ - Breaking changes
 
+## 3.67.0
+
+- Add `plus-solid`
+
 ## 3.66.0
 
 - Add `pause`, `text-sheng-square-solid`, `text-sheng-square`
