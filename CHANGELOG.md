@@ -2,6 +2,9 @@
 
 > ⚠️ - Breaking changes
 
+## 3.68.0
+- Add `equal`
+
 ## 3.67.0
 
 - Add `plus-solid`
