@@ -1,15 +1,19 @@
 import fs from 'fs'
 import path from 'path'
 import { createHash } from 'crypto'
-import fetch from 'node-fetch'
+import { fileURLToPath } from 'url'
 import mkdirp from 'mkdirp'
 import rimraf from 'rimraf'
 import { parse, stringify } from 'svgson'
 import stringifyObject from 'stringify-object'
-import { camelCase, upperFirst } from 'lodash'
+import lodash from 'lodash'
 import commentMark from 'comment-mark'
 import { optimize } from 'svgo'
 import { pinyin } from 'pinyin-pro'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+const { camelCase, upperFirst } = lodash
 
 function getSVGOConfig ({ id }) {
   return {
@@ -95,6 +99,8 @@ function renderTpl (tpl, data) {
 }
 
 async function generate () {
+  const svgFiles = await getSVGFiles()
+
   clearDir(SVG_DIR)
   clearDir(path.join(DATA_DIR, 'icons'))
 
@@ -104,78 +110,76 @@ async function generate () {
   })
 
   return Promise.all(
-    (await getSVGFiles()).map(
-      async ({ slug, content, category, desc, type, colorType }) => {
-        const file = `${slug}.svg`
-        const {
-          el,
-          content: svg,
-          width,
-          height
-        } = await normalizeSVG(content, file)
+    svgFiles.map(async ({ slug, content, category, desc, type, colorType }) => {
+      const file = `${slug}.svg`
+      const {
+        el,
+        content: svg,
+        width,
+        height
+      } = await normalizeSVG(content, file)
 
-        fs.writeFileSync(path.join(SVG_DIR, file), svg, 'utf8')
+      fs.writeFileSync(path.join(SVG_DIR, file), svg, 'utf8')
 
-        const name = camelCase(slug)
-        const Name = upperFirst(name)
+      const name = camelCase(slug)
+      const Name = upperFirst(name)
 
-        const { width: w, height: h, ...attributes } = el.attributes
+      const { width: w, height: h, ...attributes } = el.attributes
 
-        const iconCode = stringifyObject(
-          {
-            name: `Icon${Name}`,
-            content: el.children.map((child) => stringify(child)).join(''),
-            attributes,
-            width: Number(width),
-            height: Number(height)
-          },
-          {
-            indent: '  '
-          }
-        )
-
-        const deprecated = category === '@deprecated'
-        const annotation = deprecated ? '/** @deprecated */\n' : ''
-
-        const tplData = {
-          name,
-          Name,
-          icon: iconCode,
-          annotation
+      const iconCode = stringifyObject(
+        {
+          name: `Icon${Name}`,
+          content: el.children.map((child) => stringify(child)).join(''),
+          attributes,
+          width: Number(width),
+          height: Number(height)
+        },
+        {
+          indent: '  '
         }
+      )
 
-        const dataModuleCode = renderTpl(DATA_TPL, tplData)
-        const iconModuleCode = renderTpl(ICON_TPL, tplData)
+      const deprecated = category === '@deprecated'
+      const annotation = deprecated ? '/** @deprecated */\n' : ''
 
+      const tplData = {
+        name,
+        Name,
+        icon: iconCode,
+        annotation
+      }
+
+      const dataModuleCode = renderTpl(DATA_TPL, tplData)
+      const iconModuleCode = renderTpl(ICON_TPL, tplData)
+
+      fs.writeFileSync(
+        path.join(DATA_DIR, `icons/${Name}.js`),
+        dataModuleCode,
+        'utf8'
+      )
+
+      ICON_PACKS.forEach((pack) => {
+        const iconsDir = path.join(getPackDir(pack), 'src/icons')
         fs.writeFileSync(
-          path.join(DATA_DIR, `icons/${Name}.js`),
-          dataModuleCode,
+          path.join(iconsDir, `${Name}.js`),
+          iconModuleCode,
           'utf8'
         )
+      })
 
-        ICON_PACKS.forEach((pack) => {
-          const iconsDir = path.join(getPackDir(pack), 'src/icons')
-          fs.writeFileSync(
-            path.join(iconsDir, `${Name}.js`),
-            iconModuleCode,
-            'utf8'
-          )
-        })
-
-        return {
-          slug,
-          name,
-          Name,
-          file,
-          category,
-          deprecated,
-          desc,
-          type,
-          colorType,
-          annotation
-        }
+      return {
+        slug,
+        name,
+        Name,
+        file,
+        category,
+        deprecated,
+        desc,
+        type,
+        colorType,
+        annotation
       }
-    )
+    })
   ).then((icons) => {
     const dataIndex = icons
       .map((data) => renderTpl(DATA_EXPORT_TPL, data))

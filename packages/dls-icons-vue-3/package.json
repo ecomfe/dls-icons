@@ -4,7 +4,7 @@
   "description": "DLS icons for Vue.",
   "author": "Justineo (https://github.com/Justineo)",
   "scripts": {
-    "build": "node -r esm build.js",
+    "build": "node build.mjs",
     "prepublishOnly": "pnpm build"
   },
   "main": "dist/cjs/index.js",

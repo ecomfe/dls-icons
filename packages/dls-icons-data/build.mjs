@@ -1,7 +1,12 @@
+import path from 'path'
+import { fileURLToPath } from 'url'
 import { copyFileSync } from 'fs'
 import { rollup } from 'rollup'
-import babel from '@rollup/plugin-babel'
+import { babel } from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const babelConfig = {
   presets: [
@@ -23,7 +28,7 @@ const main = async () => {
 
   const inputOptions = {
     context: __dirname,
-    input: 'src/index.js',
+    input: path.resolve(__dirname, 'src/index.js'),
     plugins
   }
 
@@ -31,16 +36,19 @@ const main = async () => {
   await Promise.all([
     bundle.write({
       format: 'cjs',
-      file: 'dist/cjs/index.js',
+      file: path.resolve(__dirname, 'dist/cjs/index.js'),
       sourcemap: true
     }),
     bundle.write({
       format: 'es',
-      file: 'dist/es/index.js',
+      file: path.resolve(__dirname, 'dist/es/index.js'),
       sourcemap: true
     })
   ])
-  copyFileSync('src/index.d.ts', 'dist/index.d.ts')
+  copyFileSync(
+    path.resolve(__dirname, 'src/index.d.ts'),
+    path.resolve(__dirname, 'dist/index.d.ts')
+  )
 }
 
 main()
