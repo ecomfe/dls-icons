@@ -17,9 +17,12 @@ type IconMeta = {
 const metadata = meta as Record<string, IconMeta>
 const { SharedResources } = icons
 
-const iconList = Object.entries(icons)
-  .filter(([name]) => name.startsWith('Icon'))
-  .sort(([a], [b]) => a.localeCompare(b))
+type IconName = Extract<keyof typeof icons, `Icon${string}`>
+
+const iconList = Object.keys(icons)
+  .filter((name): name is IconName => name.startsWith('Icon'))
+  .sort((a, b) => a.localeCompare(b))
+  .map((name) => [name, icons[name]] as const)
 
 const typeOptions = [
   { label: 'All', value: undefined },
@@ -173,8 +176,9 @@ onMounted(() => {
 :root {
   color: rgba(45, 52, 64, 0.8);
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   overflow-y: scroll;
 }
 

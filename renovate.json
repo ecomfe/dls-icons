@@ -1,0 +1,60 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+  "timezone": "Asia/Shanghai",
+  "schedule": ["* * * * 2"],
+  "minimumReleaseAge": "7 days",
+  "automergeType": "pr",
+  "platformAutomerge": false,
+  "ignoreTests": false,
+  "separateMajorMinor": true,
+  "separateMultipleMajor": true,
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^pnpm-workspace\\.yaml$/"],
+      "matchStrings": [
+        "(?:^|\\r?\\n)[ \\t]+vite:[ \\t]+'(?<currentValue>[^']+)'[ \\t]+# renovate: vite-plus-core"
+      ],
+      "depNameTemplate": "@voidzero-dev/vite-plus-core",
+      "datasourceTemplate": "npm"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDepTypes": ["dependencies", "devDependencies"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "npm non-major dependencies",
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "groupName": null,
+      "automerge": false
+    },
+    {
+      "description": "Review changes to the supported Node and framework versions explicitly.",
+      "matchDepTypes": ["engines", "peerDependencies"],
+      "enabled": false
+    },
+    {
+      "description": "Keep the React 16 compatibility fixture on React 16.",
+      "matchFileNames": ["packages/dls-icons-react/package.json"],
+      "matchDepTypes": ["devDependencies"],
+      "matchPackageNames": ["react"],
+      "allowedVersions": "<17"
+    },
+    {
+      "description": "Update Vite+ and all three references to its bundled Vite core together.",
+      "matchPackageNames": ["vite-plus", "@voidzero-dev/vite-plus-core"],
+      "groupName": "Vite+ toolchain",
+      "minimumGroupSize": 4,
+      "rangeStrategy": "pin",
+      "automerge": false
+    }
+  ]
+}

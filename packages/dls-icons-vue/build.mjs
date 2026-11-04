@@ -1,6 +1,5 @@
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { copyFileSync } from 'fs'
+import path from 'node:path'
+import { copyFileSync } from 'node:fs'
 import { rollup } from 'rollup'
 import alias from '@rollup/plugin-alias'
 import { babel } from '@rollup/plugin-babel'
@@ -10,8 +9,7 @@ import css from 'rollup-plugin-postcss'
 import cssnano from 'cssnano'
 import dls from 'less-plugin-dls'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __dirname = import.meta.dirname
 
 const babelConfig = {
   presets: [
@@ -22,7 +20,6 @@ const babelConfig = {
       }
     ]
   ],
-  plugins: ['@babel/plugin-proposal-export-default-from'],
   exclude: 'node_modules/**',
   extensions: ['.js'],
   babelHelpers: 'bundled'

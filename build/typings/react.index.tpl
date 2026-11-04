@@ -1,9 +1,10 @@
 import type {
   ComponentPropsWithoutRef,
   ForwardRefExoticComponent,
-  RefAttributes,
-  JSX
+  ReactElement,
+  RefAttributes
 } from 'react'
+import type { IconData } from 'dls-icons-data'
 
 interface IconProps extends ComponentPropsWithoutRef<'svg'> {
   title?: string
@@ -13,5 +14,6 @@ interface IconProps extends ComponentPropsWithoutRef<'svg'> {
 
 type Icon = ForwardRefExoticComponent<IconProps & RefAttributes<SVGSVGElement>>
 
-export declare function SharedResources(props: {}): JSX.Element
+export declare function createIcon(data: IconData): Icon
+export declare function SharedResources(props: {}): ReactElement
 {exports}

@@ -7,8 +7,5 @@ const PACKAGES = [
   'dls-icons-vue-3'
 ]
 
-Promise.all(PACKAGES.map(sync)).then(() => {
-  console.log('Sync request sent for all packages.')
-}).catch((e) => {
-  console.error(e)
-})
+await Promise.all(PACKAGES.map(sync))
+console.log('Sync request sent for all packages.')

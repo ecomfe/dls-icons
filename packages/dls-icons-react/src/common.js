@@ -2,7 +2,7 @@
  * @file SVG icon factory
  * @author zhanglili, guyiling
  */
-import { forwardRef } from 'react'
+import React from 'react'
 import { escapeHTML } from '@/util'
 import { markup, attributes } from '@/shared'
 import '@/icon.less'
@@ -10,7 +10,7 @@ import '@/icon.less'
 const baseClassName = 'dls-icon'
 
 export function createIcon ({ name, content, width, height, attributes }) {
-  const Icon = forwardRef(({ className, title, spin, active, ...props }, ref) => {
+  const Icon = React.forwardRef(({ className, title, spin, active, ...props }, ref) => {
     const iconClasses = [baseClassName, className]
 
     if (spin) {

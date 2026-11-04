@@ -23,9 +23,14 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
+From the workspace root, install dependencies and build the icon packages.
+
 ```sh
-pnpm install
+pnpm install --frozen-lockfile
+pnpm build
 ```
+
+Run the remaining commands from `packages/site`.
 
 ### Compile and Hot-Reload for Development
 
@@ -39,8 +44,9 @@ pnpm dev
 pnpm build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Lint and format with Vite+
 
 ```sh
 pnpm lint
+pnpm format
 ```

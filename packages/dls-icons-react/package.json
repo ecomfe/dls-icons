@@ -1,6 +1,11 @@
 {
   "name": "dls-icons-react",
   "version": "3.69.6",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecomfe/dls-icons.git",
+    "directory": "packages/dls-icons-react"
+  },
   "description": "DLS icons for React.",
   "contributors": [
     "zhanglili",
@@ -22,18 +27,17 @@
     "dls-icons-data": "workspace:*"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.5",
-    "@babel/plugin-proposal-export-default-from": "^7.17.12",
-    "@babel/preset-env": "^7.18.2",
-    "@babel/preset-react": "^7.17.12",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
     "@rollup/plugin-alias": "^3.1.9",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "babel-plugin-react-require": "^3.1.3",
     "cssnano": "^5.1.12",
     "dls-icons-data": "workspace:*",
     "postcss": "^8.4.31",
-    "rollup": "^2.75.7",
+    "react": "^16.14.0",
+    "rollup": "^2.80.0",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-postcss": "^4.0.2"
   },
@@ -50,6 +54,6 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=16.3"
   }
 }
