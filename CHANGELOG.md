@@ -2,6 +2,17 @@
 
 > ⚠️ - Breaking changes
 
+## 3.69.7
+
+- Release v3.69.7 (#45) (b5a35b8)
+- Modernize tooling and automate releases (#44) (0b12ecb)
+- release v3.69.6 (e303820)
+- release v3.69.3 (462b2e8)
+- feat add wechat-solid, expand-sidebar, equal-light, creative-material-combination (c2e96c6)
+- Migrate build scripts to native ESM (5d3e1c1)
+
+[Full changelog](https://github.com/ecomfe/dls-icons/compare/v3.68.0...v3.69.7)
+
 ## 3.68.0
 - Add `equal`
 
