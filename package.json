@@ -1,7 +1,7 @@
 {
   "name": "dls-icons",
   "private": "true",
-  "version": "3.69.3",
+  "version": "3.69.6",
   "description": "Icons for Baidu Light DLS.",
   "main": "index.js",
   "engines": {
