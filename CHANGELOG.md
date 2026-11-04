@@ -2,6 +2,9 @@
 
 > ⚠️ - Breaking changes
 
+## 3.69.0
+- Add `wechat-solid`, `expand-sidebar`, `equal-light`, `creative-material-combination`
+
 ## 3.68.0
 - Add `equal`
 
