@@ -1,2 +1,2 @@
 export { data{Name} } from 'dls-icons-data'
-export Icon{Name} from './icons/{Name}'
+export { default as Icon{Name} } from './icons/{Name}'

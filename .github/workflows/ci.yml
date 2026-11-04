@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm format --check
+      - run: pnpm build
+      - name: Load built packages
+        run: |
+          node -e "for (const name of ['data', 'react', 'vue', 'vue-3']) require('./packages/dls-icons-' + name)"
+      - run: git diff --exit-code

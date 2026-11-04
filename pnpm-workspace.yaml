@@ -1,2 +1,10 @@
 packages:
   - packages/**
+
+overrides:
+  vite@*: npm:@voidzero-dev/vite-plus-core@1.2.0
+
+peerDependencyRules:
+  allowedVersions:
+    # The pinned core alias uses Vite+'s version number.
+    vite: '1.2.0' # renovate: vite-plus-core

@@ -1,12 +1,10 @@
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { copyFileSync } from 'fs'
+import path from 'node:path'
+import { copyFileSync } from 'node:fs'
 import { rollup } from 'rollup'
 import { babel } from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __dirname = import.meta.dirname
 
 const babelConfig = {
   presets: [
@@ -17,7 +15,6 @@ const babelConfig = {
       }
     ]
   ],
-  plugins: ['@babel/plugin-proposal-export-default-from'],
   exclude: 'node_modules/**',
   extensions: ['.js'],
   babelHelpers: 'bundled'

@@ -1,6 +1,11 @@
 {
   "name": "dls-icons-data",
   "version": "3.69.6",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecomfe/dls-icons.git",
+    "directory": "packages/dls-icons-data"
+  },
   "description": "Icon data for DLS icons.",
   "author": "Justineo (https://github.com/Justineo)",
   "scripts": {
@@ -11,12 +16,11 @@
   "module": "dist/es/index.js",
   "types": "dist/index.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.18.5",
-    "@babel/plugin-proposal-export-default-from": "^7.17.12",
-    "@babel/preset-env": "^7.18.2",
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "rollup": "^2.75.7"
+    "rollup": "^2.80.0"
   },
   "files": [
     "dist",
