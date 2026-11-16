@@ -35,7 +35,7 @@
     "@rollup/plugin-node-resolve": "^13.3.0",
     "cssnano": "^5.1.12",
     "dls-icons-data": "workspace:*",
-    "postcss": "^8.4.31",
+    "postcss": "^8.5.33",
     "react": "^16.14.0",
     "rollup": "^2.80.0",
     "rollup-plugin-auto-external": "^2.0.0",
